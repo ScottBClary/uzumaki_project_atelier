@@ -32,5 +32,20 @@ module.exports ={
         use: ['style-loader','css-loader']
       }
     ]
+  },
+  //[devtool] this is an additional source map that will let the browser know what files
+  //are running out code
+  //This helps with error tracing. Without it we will not know where our errors are
+  //coming from because it will state that everything inside the bundle file
+  devtool: "eval-cheap-module-source-map",
+  //[devServer] configuration for the live server including port
+  devServer: {
+    //[static] config for how what to serve
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    //[port] what port our local machine to run the dev server
+    port: 3000,
   }
 }
