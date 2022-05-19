@@ -1,7 +1,7 @@
 const axios = require('axios');
 const config = require('../config.js');
 
-let getReposByUsername = (username) => {
+let apiConnect = () => {
   let options = {
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/:rfc2204/',
     headers: {
@@ -12,4 +12,4 @@ let getReposByUsername = (username) => {
   return axios(options);
 };
 
-module.exports.getReposByUsername = getReposByUsername;
+module.exports.apiConnect = apiConnect;
