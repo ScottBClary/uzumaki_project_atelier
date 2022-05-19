@@ -1,8 +1,8 @@
 import React from 'react';
 //Bring reactDom in to mount component to the dom
 import reactDom from 'react-dom';
-import { createRoot } from "react-dom/client";
-const root = createRoot(document.getElementById("root"));
+import { createRoot } from 'react-dom/client';
+const root = createRoot(document.getElementById('root'));
 
 //change to jsx once babel is set up
 const App = () => {

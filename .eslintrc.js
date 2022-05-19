@@ -9,10 +9,10 @@ module.exports = {
     'es6': true
   },
   parserOptions: {
-    "sourceType": "module",
+    'sourceType': 'module',
     ecmaFeatures: {
       'jsx': true,
-      "sourceType": "module",
+      'sourceType': 'module',
     }
   },
   rules: {
