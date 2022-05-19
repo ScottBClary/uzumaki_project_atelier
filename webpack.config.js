@@ -1,20 +1,20 @@
 //For node to know out absolute file path we will be using the internal module path
-const path = require('path')
+const path = require('path');
 
 //Our export here is the configuration webpack we will use
-module.exports ={
+module.exports = {
   //[mode] will determine how our code will be bundled.
   //"development" will be human readable
   //"production" will be minified
-  mode: "development",
+  mode: 'development',
   //[entry] this is the file where the bundling starts from.
-  entry: "./src/index.jsx",
+  entry: './src/index.jsx',
   //[output] is a configuration object to determine how and where to bundle our code
   output: {
     //[path] is where to output
     path: path.join(__dirname, 'public'),
     //[filename] is the name of the file
-    filename: "bundle.js"
+    filename: 'bundle.js'
   },
   //[module] will allow us to set any external modules we have added to webpack
   module: {
@@ -29,7 +29,7 @@ module.exports ={
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
-        use: ['style-loader','css-loader']
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -37,7 +37,7 @@ module.exports ={
   //are running out code
   //This helps with error tracing. Without it we will not know where our errors are
   //coming from because it will state that everything inside the bundle file
-  devtool: "eval-cheap-module-source-map",
+  devtool: 'eval-cheap-module-source-map',
   //[devServer] configuration for the live server including port
   devServer: {
     //[static] config for how what to serve
@@ -48,4 +48,4 @@ module.exports ={
     //[port] what port our local machine to run the dev server
     port: 3000,
   }
-}
+};
