@@ -15,5 +15,22 @@ module.exports ={
     path: path.join(__dirname, 'public'),
     //[filename] is the name of the file
     filename: "bundle.js"
+  },
+  //[module] will allow us to set any external modules we have added to webpack
+  module: {
+    //[rules] will determine the rules around those external modules
+    rules: [
+      //the first rule is to identify js and jsx files and turn on babel
+      {
+        test: /\.(jsx|js)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      //second rule is to check for css files and load them with the following loaders
+      {
+        test: /\.css$/,
+        use: ['style-loader','css-loader']
+      }
+    ]
   }
 }
