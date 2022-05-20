@@ -47,5 +47,12 @@ module.exports = {
     compress: true,
     //[port] what port our local machine to run the dev server
     port: 3000,
-  }
+  },
+  plugins: [
+    newwebpack.DefinePlugin({
+      'process.env': {
+        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+      },
+    }),
+  ]
 };
