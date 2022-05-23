@@ -22,6 +22,7 @@ module.exports = {
     //[rules] will determine the rules around those external modules
     rules: [
       //the first rule is to identify js and jsx files and turn on babel
+      //Loaders are small plugins that basically say “When you encounter this kind of file, do this with it”.
       {
         test: /\.(jsx|js)$/,
         exclude: /node_modules/,
@@ -30,7 +31,8 @@ module.exports = {
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        include: __dirname + '/src'
       }
     ]
   },
