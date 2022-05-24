@@ -6,7 +6,7 @@ const root = createRoot(document.getElementById('root'));
 
 //change to jsx once babel is set up
 const App = () => {
-  return <h1>Hello World</h1>;
+  return <h1>Hello World!</h1>;
 };
 
 //render our app to the dom mounted to the element with id of root inside
