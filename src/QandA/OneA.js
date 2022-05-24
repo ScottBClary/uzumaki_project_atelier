@@ -6,11 +6,11 @@ class OneA extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input placeholder={'A:'}></input>
+      <div className='answer'>
+        <p>A:</p>
         <span>by user, Month DD, YYYY</span>
-        <span>Helpful? Yes#</span>
-        <span>Report or Reported</span>
+        <span className='answer-link'>Helpful? Yes#</span>
+        <span className='answer-link'>Report or Reported</span>
         <button>See More Answers or Collapse Answers</button>
       </div>
     );

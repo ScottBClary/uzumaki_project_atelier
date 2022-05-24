@@ -6,9 +6,9 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input placeholder={'Have a question? Search for answers...'}></input>
-        <button>Search</button>
+      <div className="search-bar">
+        <input className="search-field" placeholder={'Have a question? Search for answers...'}></input>
+        <button className="search-button">Search</button>
       </div>
     );
   }

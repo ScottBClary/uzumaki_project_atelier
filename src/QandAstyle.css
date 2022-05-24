@@ -1,3 +1,38 @@
-.class {
-  color: red
+/*-------------Header---------*/
+.header {
+  color: black;
+  background-color: red;
+}
+
+/*-----------Search----------*/
+.search-bar {
+  color: blue;
+}
+
+.search-bar input {
+  background-color: orange;
+}
+
+.search-bar button {
+  color: purple;
+}
+
+/*---------Question----------*/
+.question {
+  background-color: pink;
+
+}
+
+.question span {
+  background-color: yellow;
+  display:block;
+}
+/*-------------Answer---------*/
+.answer {
+  background-color: green;
+  display: inline-block
+}
+
+.answer-link {
+  display: block;
 }

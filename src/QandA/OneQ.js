@@ -7,8 +7,8 @@ class OneQ extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input placeholder={'Q:'}></input>
+      <div className='question'>
+        <p>Q:</p>
         <span>Helpful? Yes#</span>
         <span>Add Answer</span>
         <OneA/>
