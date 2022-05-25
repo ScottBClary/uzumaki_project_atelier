@@ -68,6 +68,11 @@
   border: none;
 }
 
+.add-question-button {
+ margin-top: 10px;
+ margin-left: 45%;
+ font-weight: bold;
+}
 /*-------------Answer---------*/
 .answer {
   background-color: green;
@@ -92,4 +97,56 @@
 
 .answer-report-link {
   background-color: yellow;
+}
+
+
+/*-------------Modals--------------*/
+
+.question-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  z-index: 10;
+  display: grid;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.add-question-text,
+.add-question-username,
+.add-question-email,
+.submit-question-button {
+  border: 3px solid black;
+  padding: 5px;
+}
+.add-question-text {
+  height: 100px;
+  vertical-align: top;
+
+}
+
+.add-question-titles {
+  margin-bottom: 0;
+}
+
+.submit-question-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.question-modal-close {
+  position: absolute;
+  top:0;
+  right:0;
+  margin-top:5px;
+  margin-right: 10px;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+}
+
+.question-modal-close:hover {
+  border: 2px solid black;
 }

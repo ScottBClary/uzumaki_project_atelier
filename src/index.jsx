@@ -3,6 +3,7 @@ import React from 'react';
 import reactDom from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import MainQA from './QandA/MainQA.js';
+
 const root = createRoot(document.getElementById('root'));
 
 //change to jsx once babel is set up
