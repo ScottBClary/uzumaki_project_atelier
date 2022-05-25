@@ -23,17 +23,29 @@ module.exports = {
     rules: [
       //the first rule is to identify js and jsx files and turn on babel
       //Loaders are small plugins that basically say “When you encounter this kind of file, do this with it”.
+
+      {
+        test: /\.(png|jpeg|JPEG|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader'
+          },
+        ],
+      },
       {
         test: /\.(jsx|js)$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },
+
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         include: __dirname + '/src'
-      }
+      },
+
+
     ]
   },
   //[devtool] this is an additional source map that will let the browser know what files
