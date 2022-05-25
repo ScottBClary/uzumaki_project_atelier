@@ -1,69 +1,89 @@
 /*-------------Header---------*/
 .header {
   color: black;
-  background-color: red;
+  font-weight: 100;
 }
 
 /*-----------Search----------*/
 .search-bar {
-  background-color: lightblue;
-}
-
-.search-bar input {
-  background-color: orange;
-}
-
-.search-bar button {
-  color: purple;
-}
-
-/*---------Q and A set----------*/
-.qa-container {
-  align-items: flex-start;
-  background-color: teal;
   display: flex;
-  flex-flow: column nowrap;
+  height: 45px;
+  max-width: 100%;
+  margin: 0 100px 0 100px;
 }
+
+.search-field {
+  background-color: lightgrey;
+  border: none;
+  color: black;
+  float: left;
+  font-size: 15px;
+  font-weight: bold;
+  width: 85%;
+
+}
+
+.search-button {
+  background-color: lightgrey;
+  border: none;
+  float: right;
+  font-size: 15px;
+  font-weight: bold;
+  width: 15%;
+
+}.search-button:hover {
+  border: 1px solid black;
+}
+/*---------Q and A set----------*/
+
 
 /*---------Question----------*/
 .question {
-  background-color: pink;
   display: flex;
-  flex-flow: row nowrap;
+  font-weight: bold;
+  max-width: 100%;
+  margin: 0 100px 0 100px;
+  padding-top: 10px;
 }
 .question-text {
-  background-color: pink;
-  width: 500px;
+  height: auto;
+  float: right;
+  width: 60%;
+
 }
 .question-links {
-  background-color: yellow;
+  float: left;
+  height: auto;
+  width: 40%;
   display: flex;
-  flex-flow: column nowrap;
+  justify-content: end;
+
 }
+
 .question-help-link {
-  background-color: yellow;
+  border: none;
 }
 
 .question-add-answer-link {
-  background-color: yellow;
+  border: none;
 }
 
 /*-------------Answer---------*/
 .answer {
   background-color: green;
-  display: grid;
+
 }
 .answer-text {
   background-color: green;
-  width: 500px;
+
 }
 .answer-identifier {
   background-color: blue;
+
 }
 .answer-links {
   background-color: yellow;
-  display: flex;
-  flex-flow: column nowrap
+
 }
 
 .answer-help-link {
