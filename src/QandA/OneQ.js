@@ -8,10 +8,11 @@ class OneQ extends React.Component {
   render() {
     return (
       <div className='question'>
-        <p>Q:</p>
-        <span>Helpful? Yes#</span>
-        <span>Add Answer</span>
-        <OneA/>
+        <p className='question-text'>Q:</p>
+        <div className='question-links'>
+          <span className='question-help-link'>Helpful? Yes#</span>
+          <span className='question-add-answer-link'>Add Answer</span>
+        </div>
       </div>
     );
   }

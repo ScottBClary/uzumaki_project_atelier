@@ -7,10 +7,12 @@ class OneA extends React.Component {
   render() {
     return (
       <div className='answer'>
-        <p>A:</p>
-        <span>by user, Month DD, YYYY</span>
-        <span className='answer-link'>Helpful? Yes#</span>
-        <span className='answer-link'>Report or Reported</span>
+        <p className='answer-text'>A:</p>
+        <div className='answer-links'>
+          <span className='answer-help-link'>Helpful? Yes#</span>
+          <span className='answer-report-link'>Report or Reported</span>
+        </div>
+        <span className='answer-identifier'>by user, Month DD, YYYY</span>
         <button>See More Answers or Collapse Answers</button>
       </div>
     );

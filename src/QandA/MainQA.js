@@ -12,8 +12,11 @@ class MainQA extends React.Component {
     return (
       <div>
         <h1 className='header'>Questions and Answers</h1>
-        <Search/>
-        <OneQ/>
+        <div className='qa-container'>
+          <Search/>
+          <OneQ/>
+          <OneA/>
+        </div>
         <button>More Answered Questions</button>
         <button>Add Question</button>
       </div>

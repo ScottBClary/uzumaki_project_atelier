@@ -6,7 +6,7 @@
 
 /*-----------Search----------*/
 .search-bar {
-  color: blue;
+  background-color: lightblue;
 }
 
 .search-bar input {
@@ -17,22 +17,59 @@
   color: purple;
 }
 
+/*---------Q and A set----------*/
+.qa-container {
+  align-items: flex-start;
+  background-color: teal;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 /*---------Question----------*/
 .question {
   background-color: pink;
-
+  display: flex;
+  flex-flow: row nowrap;
 }
-
-.question span {
+.question-text {
+  background-color: pink;
+  width: 500px;
+}
+.question-links {
   background-color: yellow;
-  display:block;
+  display: flex;
+  flex-flow: column nowrap;
 }
+.question-help-link {
+  background-color: yellow;
+}
+
+.question-add-answer-link {
+  background-color: yellow;
+}
+
 /*-------------Answer---------*/
 .answer {
   background-color: green;
-  display: inline-block
+  display: grid;
+}
+.answer-text {
+  background-color: green;
+  width: 500px;
+}
+.answer-identifier {
+  background-color: blue;
+}
+.answer-links {
+  background-color: yellow;
+  display: flex;
+  flex-flow: column nowrap
 }
 
-.answer-link {
-  display: block;
+.answer-help-link {
+  background-color: yellow;
+}
+
+.answer-report-link {
+  background-color: yellow;
 }
