@@ -3,20 +3,32 @@ import React from 'react';
 class OneA extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      notReported: true
+    };
+    this.reportClick = this.reportClick.bind(this);
+  }
+
+  reportClick() {
+    this.setState({
+      notReported: !this.state.notReported
+    });
   }
   render() {
     return (
       <div className='answer'>
-        <p className='answer-text'>A:</p>
+        <div className='answer-text'>A: {this.props.answer}</div>
         <div className='answer-links'>
-          <span className='answer-help-link'>Helpful? Yes#</span>
-          <span className='answer-report-link'>Report or Reported</span>
+          <button className='answer-help-link'>Helpful? Yes# |</button>
+          <button className='answer-report-link' onClick={this.reportClick}>{this.state.notReported ? 'REPORT' : 'REPORTED'}</button>
         </div>
-        <span className='answer-identifier'>by user, Month DD, YYYY</span>
-        <button>See More Answers or Collapse Answers</button>
+        {/* <span className='answer-identifier'>by user, Month DD, YYYY</span> */}
+        {/* <button>See More Answers or Collapse Answers</button> */}
       </div>
     );
   }
 }
+
+
 
 export default OneA;

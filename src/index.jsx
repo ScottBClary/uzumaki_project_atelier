@@ -3,6 +3,7 @@ import React from 'react';
 import reactDom from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import MainQA from './QandA/MainQA.js';
+import axios from 'axios';
 
 const root = createRoot(document.getElementById('root'));
 

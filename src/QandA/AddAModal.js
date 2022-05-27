@@ -1,6 +1,7 @@
 import React from 'react';
+// import OneQ from './OneQ';
 
-class AddA extends React.Component {
+class AddAModal extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -21,4 +22,4 @@ class AddA extends React.Component {
   }
 }
 
-export default AddA;
+export default AddAModal;

@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
+
 //Our export here is the configuration webpack we will use
 module.exports = {
   //[mode] will determine how our code will be bundled.
@@ -55,5 +56,9 @@ module.exports = {
         API_TOKEN: JSON.stringify(process.env.API_TOKEN),
       },
     }),
-  ]
+    new Dotenv({
+      'process.env': {
+        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+      }
+    })]
 };

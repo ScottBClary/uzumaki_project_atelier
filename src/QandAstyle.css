@@ -30,6 +30,7 @@
   font-size: 15px;
   font-weight: bold;
   width: 15%;
+  cursor: pointer;
 
 }.search-button:hover {
   border: 1px solid black;
@@ -72,14 +73,23 @@
  margin-top: 10px;
  margin-left: 45%;
  font-weight: bold;
+ cursor: pointer;
 }
 /*-------------Answer---------*/
 .answer {
-  background-color: green;
+
+  display: flex;
+  font-weight: bold;
+  max-width: 100%;
+  margin: 0 100px 0 100px;
+  padding-top: 10px;
 
 }
 .answer-text {
-  background-color: green;
+
+  height: auto;
+  float: right;
+  width: 60%;
 
 }
 .answer-identifier {
@@ -87,16 +97,22 @@
 
 }
 .answer-links {
-  background-color: yellow;
+  cursor: pointer;
+  float: left;
+  height: auto;
+  width: 40%;
+  display: flex;
+  justify-content: end;
+  border: none;
 
 }
 
 .answer-help-link {
-  background-color: yellow;
+  border: none;
 }
 
 .answer-report-link {
-  background-color: yellow;
+  border: none;
 }
 
 
@@ -135,6 +151,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .question-modal-close {
