@@ -8,6 +8,7 @@ class SizeDropdown extends React.Component {
 
   render() {
     return <div className = 'sizeDropdown'>
+      <div>Size</div>
       <select>
         <option value="fruit">Fruit</option>
         <option value="vegetable">Vegetable</option>

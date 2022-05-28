@@ -1,0 +1,186 @@
+
+.productDetail {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem auto;
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 600px;
+  border-style: solid;
+  background-color: lightblue;
+
+}
+
+.productDescription {
+  width: 100%;
+  height: 20%;
+  background-color: red;
+}
+
+.productGallery {
+
+  width: auto;
+  height: auto;
+  background-color: green;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+.groupDivRight {
+  width: 50%;
+  height: 100%;
+  background-color: firebrick;
+  min-width: 400px;
+}
+
+.groupDivLeft {
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  background-color: firebrick;
+  min-width: 400px;
+}
+
+.styleSelector {
+  width: 100%;
+  height: 60%;
+  flex: 0;
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  object-fit: scale-down;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-y:auto
+}
+
+.resizableImage {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  object-fit: scale-down;
+  max-width: 100%;
+}
+
+.dropdownContainer {
+  height: 20%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.quantityDropdown {
+    flex-grow: 1;
+
+
+}
+.sizeDropdown {
+  flex-grow: 1;
+
+}
+
+.style {
+  aspect-ratio: 1;
+  position: relative;
+  object-fit: scale-down;
+  width: 100%;
+  background-color: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedResizableImage {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  object-fit: scale-down;
+  max-width: 100%;
+  border-style: solid;
+  border-color: green;
+}
+
+.floatingCheck {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.styleGallery {
+  position: relative;
+  top:0px;
+  left:0px;
+  background: rgba(76, 175, 80, 0.3);
+  width: 100%;
+  height: 30%;
+  max-height: 30%;
+  min-width: 400px;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 20% 10%;
+  justify-content: center;
+
+}
+
+.galleryArrow {
+  min-width: 70px;
+  max-width: 100px;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.galleryArrowRow {
+  object-fit: scale-up;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+.styleGalleryThumbnail {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.styleGalleryThumbnailSelected {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.anotherDiv {
+  height: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.thumbnailFloatingCheck {
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
