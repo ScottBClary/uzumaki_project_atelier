@@ -1,5 +1,5 @@
 import React from 'react';
-import AddAModal from './AddQModal.js';
+import AddAModal from './AddAModal.js';
 
 class OneQ extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class OneQ extends React.Component {
         <div className='question-text'>Q: {this.props.question} </div>
         <div className='question-links'>
           <button className='question-help-link'>Helpful? Yes#</button>
-          {this.state.answerModalOpened ? <AddAModal/> : null}
+          {this.state.answerModalOpened ? <AddAModal closeAnswerModal={this.openAnswerModal}/> : null}
           <button className='question-add-answer-link' onClick={this.openAnswerModal}>|  Add Answer</button>
           {/* {this.state.answerModalOpened ? <AddAModal/> : null} */}
         </div>

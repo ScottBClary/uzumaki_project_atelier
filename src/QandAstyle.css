@@ -116,7 +116,7 @@
 }
 
 
-/*-------------Modals--------------*/
+/*-------------Question Modal--------------*/
 
 .question-modal {
   position: fixed;
@@ -165,5 +165,59 @@
 }
 
 .question-modal-close:hover {
+  border: 2px solid black;
+}
+
+/*--------------Answer Modal------------*/
+
+.answer-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  z-index: 10;
+  display: grid;
+  border: 3px solid black;
+  padding: 10px;
+}
+
+.add-answer-text,
+.add-answer-username,
+.add-answer-email,
+.add-answer-submit,
+.image-button {
+  border: 3px solid black;
+  padding: 5px;
+}
+
+.add-answer-text {
+  height: 100px;
+  vertical-align: top;
+}
+
+.add-answer-titles {
+  margin-bottom: 0;
+}
+
+.add-answer-submit,
+.image-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.answer-modal-close {
+  position: absolute;
+  top:0;
+  right:0;
+  margin-top:5px;
+  margin-right: 10px;
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+}
+
+.answer-modal-close:hover {
   border: 2px solid black;
 }

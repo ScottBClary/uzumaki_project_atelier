@@ -1,6 +1,10 @@
 //For node to know out absolute file path we will be using the internal module path
 const path = require('path');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
+dotenv.config();
+
+
 
 
 //Our export here is the configuration webpack we will use
@@ -56,9 +60,12 @@ module.exports = {
         API_TOKEN: JSON.stringify(process.env.API_TOKEN),
       },
     }),
-    new Dotenv({
-      'process.env': {
-        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
-      }
-    })]
+  ],
+  resolve: {
+    fallback: {
+      fs: false,
+      path: false,
+      os: false
+    }
+  }
 };

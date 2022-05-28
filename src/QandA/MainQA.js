@@ -6,7 +6,10 @@ import QAList from './QAList.js';
 import AddQModal from './AddQModal.js';
 import axios from 'axios';
 import '../QandAstyle.css';
-// import data from './questionsdata.js';
+// require('dotenv').config();
+// import API_TOKEN from '../../.env';
+import dotenv from 'dotenv';
+dotenv.config();
 
 class MainQA extends React.Component {
   constructor(props) {
@@ -35,7 +38,7 @@ class MainQA extends React.Component {
   componentDidMount() {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${this.state.productId}`, {
       headers: {
-        Authorization: process.env.API_TOKEN
+        'Authorization': `Bearer ${process.env.API_TOKEN}`
       }
     })
     // axios.get('/qa/questions', {'product_id': this.state.productId, 'results': this.state.questions})
