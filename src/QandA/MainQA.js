@@ -8,8 +8,9 @@ import axios from 'axios';
 import '../QandAstyle.css';
 // require('dotenv').config();
 // import API_TOKEN from '../../.env';
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
+
 
 class MainQA extends React.Component {
   constructor(props) {
