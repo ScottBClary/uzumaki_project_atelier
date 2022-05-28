@@ -17,10 +17,10 @@ class OneA extends React.Component {
   render() {
     return (
       <div className='answer'>
-        <div className='answer-text'>A: {this.props.answer}</div>
+        <div className='answer-text'>A: {this.props.answer.body}</div>
         <div className='answer-links'>
-          <button className='answer-help-link'>Helpful? Yes# |</button>
-          <button className='answer-report-link' onClick={this.reportClick}>{this.state.notReported ? 'REPORT' : 'REPORTED'}</button>
+          <button className='answer-help-link'>Helpful? Yes {this.props.answer.helpfulness} |</button>
+          <button className='answer-report-link' onClick={this.reportClick}>{this.state.notReported ? 'Report' : 'Reported'}</button>
         </div>
         {/* <span className='answer-identifier'>by user, Month DD, YYYY</span> */}
         {/* <button>See More Answers or Collapse Answers</button> */}

@@ -5,11 +5,12 @@ import OneA from './OneA.js';
 const QAList = function ({ entries }) {
   const entryList = entries.map((entry, index) =>
     <ul key={index}>
-      <OneQ question={entry.question_body}/>
-      {console.log(entry)}
+      <OneQ question={entry} />
+      {console.log('entry', entry)}
       {Object.values(entry.answers).map((answer, index) =>
         <ul key={index}>
-          <OneA answer={answer.body}/>
+          {console.log('answer', answer)}
+          <OneA answer={answer}/>
         </ul>
       )}
     </ul>
@@ -17,7 +18,6 @@ const QAList = function ({ entries }) {
   return (
     <div>
       {entryList}
-      {/* {answerList} */}
     </div>
   );
 };

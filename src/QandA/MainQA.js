@@ -33,7 +33,7 @@ class MainQA extends React.Component {
         console.log(body);
         this.setState({
           results: body.data.results,
-          question: body.data.results.question_body,
+          // question: body.data.results.question_body,
           answers: body.data.results.answers
         });
       })

@@ -17,11 +17,12 @@ class OneQ extends React.Component {
   }
 
   render() {
+
     return (
       <div className='question'>
-        <div className='question-text'>Q: {this.props.question} </div>
+        <div className='question-text'>Q: {this.props.question.question_body} {console.log('props', this.props.question_body)} </div>
         <div className='question-links'>
-          <button className='question-help-link'>Helpful? Yes#</button>
+          <button className='question-help-link'>Helpful? Yes {this.props.question.question_helpfulness}</button>
           {this.state.answerModalOpened ? <AddAModal closeAnswerModal={this.openAnswerModal}/> : null}
           <button className='question-add-answer-link' onClick={this.openAnswerModal}>|  Add Answer</button>
           {/* {this.state.answerModalOpened ? <AddAModal/> : null} */}
