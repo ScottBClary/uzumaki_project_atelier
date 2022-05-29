@@ -375,32 +375,7 @@ var productInfo = {
     }
   ]
 };
-productInfo;
-/*
-  id
-  campus
-  name:
-  slogan
-  description
-  category
-  default_price
-  created_at
-  updated_at
-  styles :[
-    {
-      style_id: number;
-      'name': 'Dark Grey & Black',
-      'original_price': '170.00',
-      'sale_price': null,
-      'default?': false,
-      'photos': [
-        skus: {'2390387': {
-          'quantity': 8,
-          'size': 'XS'
-        }]
 
-    }]
-*/
 //change to jsx once babel is set up
 //Give html elements ID's so we can change with CSS?
 const App = () => {

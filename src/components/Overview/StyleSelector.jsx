@@ -13,7 +13,7 @@ class StyleSelector extends React.Component {
     var result = [];
     var styles = store.getState().productInfo.styles;
     for (var i = 0; i < styles.length; i++) {
-      result.push(<Style style = {styles[i]} index = {i}></Style>);
+      result.push(<Style style = {styles[i]} index = {i} key = {i}></Style>);
     }
     return result;
   }

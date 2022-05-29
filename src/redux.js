@@ -3,6 +3,7 @@ var initialState = {
   productInfo: undefined,
   styleIndex: 0,
   styleThumbnailIndex: 0,
+  cart: [],
 };
 var reducer = function(state = initialState, action) {
 
@@ -20,6 +21,8 @@ var reducer = function(state = initialState, action) {
   case 'changeStyleThumbnailIndex' :
     newState.styleThumbnailIndex = action.value;
     break;
+  case 'addToCart' :
+    newState.cart.push(action.value);
   }
   return newState;
 };
@@ -50,12 +53,16 @@ export default store;
       'sale_price': null,
       'default?': false,
       'photos': [
-        'thumbnail_url'
-        'url'
+          {
+            'thumbnail_url'
+            'url'
+          }
         ]
-      skus: [{'2390387': {
+      skus: [
+        { '2390387': {
           'quantity': 8,
           'size': 'XS'
-        }]
+        }
+      ]
     }]
 */

@@ -7,11 +7,37 @@ import StyleSelector from './StyleSelector.jsx';
 import DropdownContainer from './DropdownContainer.jsx';
 import GalleryArrow from './GalleryArrow.jsx';
 import StyleGallery from './StyleGallery.jsx';
+
 import store from '../../redux.js';
 class ProductDetail extends React.Component {
   constructor(props) {
     super(props);
     store.dispatch({type: 'changeCurrentProduct', value: this.props.product});
+    this.state = {
+      product: props.product,
+      currentStyleIndex: 0,
+      currentStyle: {},
+      currentSkus: [],
+    };
+    this.onChange = this.onChange.bind(this);
+    store.subscribe(this.onChange);
+  }
+
+  onChange() {
+    var theStore = store.getState();
+    this.setState((oldState) => {
+      return {
+        product: theStore.productInfo,
+        currentStyleIndex: theStore.styleIndex,
+        currentStyle: theStore.productInfo.styles[theStore.styleIndex],
+        currentSkus: theStore.productInfo.styles[theStore.styleIndex].skus,
+      };
+    });
+
+  }
+
+  changeView() {
+
   }
 
   render() {
@@ -25,11 +51,12 @@ class ProductDetail extends React.Component {
 
       </div>
       <div className = 'groupDivRight'>
-        <ProductDescription/>
+        <ProductDescription desc = {this.state.product.description || ''}></ProductDescription>
         <StyleSelector styles = {[]}>
 
         </StyleSelector>
-        <DropdownContainer/>
+        <DropdownContainer skus = {this.state.currentSkus}/>
+
       </div>
 
     </div>;

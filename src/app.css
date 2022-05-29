@@ -15,8 +15,12 @@
 
 .productDescription {
   width: 100%;
+  display: flex;
   height: 20%;
-  background-color: red;
+  background-color: cyan;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .productGallery {
@@ -86,6 +90,15 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
+}
+
+.addToCart {
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .quantityDropdown {
@@ -94,8 +107,12 @@
 
 }
 .sizeDropdown {
-  flex-grow: 1;
-
+  display: grid;
+  justify-content: center;
+  align-items: stretch;
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  width:100%;
 }
 
 .style {

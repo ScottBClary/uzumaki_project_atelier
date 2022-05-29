@@ -44,14 +44,21 @@ class ProductGallery extends React.Component {
   }
 
   render() {
-
+    var hideRight = false;
+    var hideLeft = false;
+    if (this.state.currentIndex === 0) {
+      hideLeft = true;
+    }
+    if (this.state.currentIndex === (this.state.max - 1)) {
+      hideRight = true;
+    }
     return <div className = 'productGallery'>
       <div className = 'galleryDiv'>
-        <GalleryArrow direction = 'left' onClick = {this.onClick}></GalleryArrow>
+        {!hideLeft && <GalleryArrow direction = 'left' onClick = {this.onClick}></GalleryArrow>}
       </div>
       <img src = {this.state.currentPicture} className = 'resizableImage'></img>
       <div className = 'galleryDiv'>
-        <GalleryArrow direction = 'right' onClick = {this.onClick}></GalleryArrow>
+        {!hideRight && <GalleryArrow direction = 'right' onClick = {this.onClick}></GalleryArrow>}
       </div>
     </div>;
   }

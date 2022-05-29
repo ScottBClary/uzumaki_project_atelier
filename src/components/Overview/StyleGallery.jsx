@@ -81,7 +81,7 @@ class StyleGallery extends React.Component {
     var ps = store.getState().productInfo.styles;
     var result = [];
     for (var i = this.state.first; i < (this.state.first + 4) && i < (this.state.max); i++) {
-      result.push( <StyleGalleryThumbnail index = {i} isSelected = {i === this.state.selectedIndex} image = {ps[this.state.selectedStyle].photos[i].thumbnail_url} handleClick = {this.onClick} ></StyleGalleryThumbnail>);
+      result.push( <StyleGalleryThumbnail key = {i} index = {i} isSelected = {i === this.state.selectedIndex} image = {ps[this.state.selectedStyle].photos[i].thumbnail_url} handleClick = {this.onClick} ></StyleGalleryThumbnail>);
     }
 
     return result;

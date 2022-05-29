@@ -1,18 +1,19 @@
 
 import React from 'react';
-import QuantityDropdown from './QuantityDropdown.jsx';
+import AddToCart from './AddToCart.jsx';
 import SizeDropdown from './SizeDropdown.jsx';
-class DropdownContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+var DropdownContainer = function (props) {
 
-  render() {
-    return <div className = 'dropdownContainer'>
-      <SizeDropdown/>
-      <QuantityDropdown/>
-    </div>;
-  }
-}
+  console.log('ran with ' + props.skus);
+  var skusAsArray = function(skus) {
+    return Object.keys(skus);
+  };
+  return (
+    <div className = 'dropdownContainer'>
+      <SizeDropdown skus = {props.skus} key = {skusAsArray(props.skus)}/>
+      <AddToCart/>
+    </div>
+  );
+};
 
 export default DropdownContainer;
