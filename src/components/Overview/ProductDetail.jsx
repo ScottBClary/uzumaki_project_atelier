@@ -18,11 +18,11 @@ class ProductDetail extends React.Component {
     return <div className = 'productDetail'>
       <div className = 'groupDivLeft'>
         <StyleGallery></StyleGallery>
-        <div className = 'anotherDiv'>
-          <GalleryArrow direction = 'left'></GalleryArrow>
-          <ProductGallery/>
-          <GalleryArrow direction = 'right'></GalleryArrow>
-        </div>
+
+
+        <ProductGallery/>
+
+
       </div>
       <div className = 'groupDivRight'>
         <ProductDescription/>

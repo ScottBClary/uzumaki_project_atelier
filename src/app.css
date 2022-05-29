@@ -21,14 +21,19 @@
 
 .productGallery {
 
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 70%;
   background-color: green;
   min-width: 200px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+
+}
+
+.productGallery img {
+  max-width: 65%;
 }
 
 
@@ -126,13 +131,13 @@
   left:0px;
   background: rgba(76, 175, 80, 0.3);
   width: 100%;
-  height: 30%;
+
   max-height: 30%;
   min-width: 400px;
   z-index: 0;
-  display: grid;
-  grid-template-columns: 10% 20% 20% 20% 20% 10%;
+  display: flex;
   justify-content: center;
+  gap: 10px;
 
 }
 
@@ -147,8 +152,9 @@
 }
 
 .galleryArrowRow {
+  width: 10%;
   object-fit: scale-up;
-  width: 100%;
+
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -157,11 +163,13 @@
 }
 
 .styleGalleryThumbnail {
+  height:100%;
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
 }
 
 .styleGalleryThumbnailSelected {
@@ -183,4 +191,9 @@
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.galleryDiv {
+  width: auto;
+  min-width: 10%;
 }

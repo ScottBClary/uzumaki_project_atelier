@@ -1,15 +1,58 @@
 
 import React from 'react';
-
-
+import store from '../../redux.js';
+import GalleryArrow from './GalleryArrow.jsx';
 class ProductGallery extends React.Component {
   constructor(props) {
     super(props);
+    var theStore = store.getState();
+
+    this.state = {
+      currentIndex: theStore.styleThumbnailIndex,
+      currentPicture: theStore.productInfo.styles[theStore.styleIndex].photos[theStore.styleThumbnailIndex].url,
+      max: theStore.productInfo.styles[theStore.styleIndex].photos.length,
+
+    };
+    this.onClick = this.onClick.bind(this);
+    this.hasChanged = this.hasChanged.bind(this);
+    store.subscribe(this.hasChanged);
+  }
+
+  hasChanged() {
+
+    var theStore = store.getState();
+    this.setState({
+      currentIndex: theStore.styleThumbnailIndex,
+      currentPicture: theStore.productInfo.styles[theStore.styleIndex].photos[theStore.styleThumbnailIndex].url,
+      max: theStore.productInfo.styles[theStore.styleIndex].photos.length,
+    });
+  }
+
+  onClick(direction) {
+
+    if (direction === 'right') {
+      if (this.state.currentIndex < (this.state.max - 1)) {
+        store.dispatch({type: 'changeStyleThumbnailIndex', value: (this.state.currentIndex + 1)});
+      }
+    } else {
+
+      if (this.state.currentIndex > 0) {
+        store.dispatch({type: 'changeStyleThumbnailIndex', value: (this.state.currentIndex - 1)});
+      }
+
+    }
   }
 
   render() {
+
     return <div className = 'productGallery'>
-      <img src = 'https://media.istockphoto.com/photos/blank-black-tshirt-front-with-clipping-path-picture-id483960103?b=1&k=20&m=483960103&s=170667a&w=0&h=hNKNseCmaThTsh4i7Q3kHETlWo5Zi7Ogw-luVozfP_M=' className = 'resizableImage'></img>
+      <div className = 'galleryDiv'>
+        <GalleryArrow direction = 'left' onClick = {this.onClick}></GalleryArrow>
+      </div>
+      <img src = {this.state.currentPicture} className = 'resizableImage'></img>
+      <div className = 'galleryDiv'>
+        <GalleryArrow direction = 'right' onClick = {this.onClick}></GalleryArrow>
+      </div>
     </div>;
   }
 }

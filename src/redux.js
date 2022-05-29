@@ -30,3 +30,32 @@ var store = configureStore({
 });
 
 export default store;
+
+//productInfo;
+/*
+  id
+  campus
+  name:
+  slogan
+  description
+  category
+  default_price
+  created_at
+  updated_at
+  styles :[
+    {
+      style_id: number;
+      'name': 'Dark Grey & Black',
+      'original_price': '170.00',
+      'sale_price': null,
+      'default?': false,
+      'photos': [
+        'thumbnail_url'
+        'url'
+        ]
+      skus: [{'2390387': {
+          'quantity': 8,
+          'size': 'XS'
+        }]
+    }]
+*/

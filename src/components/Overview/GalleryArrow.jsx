@@ -1,21 +1,17 @@
 
 import React from 'react';
 import {AiOutlineArrowLeft, AiOutlineArrowRight} from 'react-icons/ai';
-class GalleryArrow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      direction: this.props.direction,
-    };
+var GalleryArrow = function(props) {
+  //props.direction
+  //props.onclick
+
+
+  if (props.direction === 'left') {
+    return <AiOutlineArrowLeft className = 'galleryArrow' onClick = {() => { props.onClick('left'); }}/>;
+  } else {
+    return <AiOutlineArrowRight className = 'galleryArrow' onClick = {() => { props.onClick('right'); }}/>;
   }
 
-  render() {
-    if (this.props.direction === 'left') {
-      return <AiOutlineArrowLeft className = 'galleryArrow'/>;
-    } else {
-      return <AiOutlineArrowRight className = 'galleryArrow'/>;
-    }
-  }
-}
+};
 
 export default GalleryArrow;
