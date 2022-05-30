@@ -7,7 +7,7 @@ class AddToCart extends React.Component {
 
   render() {
     return <div className = 'addToCart'>
-      <button onClick = {() => {store.dispatch({type: 'addToCart', value: 1});}}>Add to Cart</button>
+      <button onClick = {() => { store.dispatch({type: 'addToCart', value: 1}); }} className = 'addToCartButton'>Add to Cart</button>
     </div>;
   }
 }

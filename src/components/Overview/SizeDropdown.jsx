@@ -75,7 +75,7 @@ class SizeDropdown extends React.Component {
         skus: oldState.skus,
         skusAsArray: oldState.skusAsArray,
         sizeSelected: true,
-        displayError: oldState.displayError,
+        displayError: false,
       };
     });
   }
@@ -97,9 +97,9 @@ class SizeDropdown extends React.Component {
   getErrorMessage() {
     var result = [];
     if (this.state.displayError) {
-      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage'>Please pick a size.</div></div>);
+      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage' style = {{color: 'red'}}>Please pick a size.</div></div>);
     } else {
-      result.push(<div>Size</div>);
+      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage' style = {{visibility: 'hidden'}}>Please pick a size.</div></div>);
     }
 
     return result;

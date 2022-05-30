@@ -15,6 +15,7 @@ class StyleGallery extends React.Component {
       first: 0,
       selectedIndex: 0,
       max: theStore.productInfo.styles.length,
+      numberOfThumbnails: 7,
     };
     this.onClick = this.onClick.bind(this);
     this.onMove = this.onMove.bind(this);
@@ -38,15 +39,19 @@ class StyleGallery extends React.Component {
           selectedStyle: oldState.selectedStyle,
           first: (oldState.first - 1),
           selectedIndex: oldState.selectedIndex,
+          max: oldState.max,
+          numberOfThumbnails: oldState.numberOfThumbnails,
         };
       });
     } else {
-      if (direction === 'right' && this.state.first < this.state.max - 4) {
+      if (direction === 'right' && (this.state.first + this.state.numberOfThumbnails) < (this.state.max)) {
         this.setState((oldState) => {
           return {
             selectedStyle: oldState.selectedStyle,
             first: (oldState.first + 1),
             selectedIndex: oldState.selectedIndex,
+            max: oldState.max,
+            numberOfThumbnails: oldState.numberOfThumbnails,
           };
         });
       }
@@ -59,10 +64,14 @@ class StyleGallery extends React.Component {
     var theStore = store.getState();
     var sIndex = theStore.styleIndex;
     if (sIndex !== this.state.selectedStyle) {
-      this.setState({
-        selectedStyle: sIndex,
-        first: 0,
-        selectedIndex: 0,
+      this.setState((oldState) => {
+        return {
+          selectedStyle: sIndex,
+          first: 0,
+          selectedIndex: 0,
+          max: oldState.max,
+          numberOfThumbnails: oldState.numberOfThumbnails,
+        };
       });
     } else {
       if (theStore.styleThumbnailIndex !== this.state.selectedIndex) {
@@ -71,6 +80,8 @@ class StyleGallery extends React.Component {
             selectedStyle: oldState.selectedStyle,
             first: oldState.first,
             selectedIndex: theStore.styleThumbnailIndex,
+            max: oldState.max,
+            numberOfThumbnails: oldState.numberOfThumbnails,
           };
         });
       }
@@ -80,7 +91,7 @@ class StyleGallery extends React.Component {
   renderThumbnails() {
     var ps = store.getState().productInfo.styles;
     var result = [];
-    for (var i = this.state.first; i < (this.state.first + 4) && i < (this.state.max); i++) {
+    for (var i = this.state.first; i < (this.state.first + this.state.numberOfThumbnails) && i < (this.state.max); i++) {
       result.push( <StyleGalleryThumbnail key = {i} index = {i} isSelected = {i === this.state.selectedIndex} image = {ps[this.state.selectedStyle].photos[i].thumbnail_url} handleClick = {this.onClick} ></StyleGalleryThumbnail>);
     }
 
@@ -95,7 +106,7 @@ class StyleGallery extends React.Component {
     if (this.state.first === 0) {
       hideLeft = true;
     }
-    if (this.state.first === (this.state.max - 4)) {
+    if (this.state.first >= (this.state.max - this.state.numberOfThumbnails)) {
       hideRight = true;
     }
     return <div className = 'styleGallery'>

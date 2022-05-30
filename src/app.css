@@ -38,6 +38,10 @@
 
 .productGallery img {
   max-width: 65%;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+
 }
 
 
@@ -86,16 +90,19 @@
 .dropdownContainer {
   height: 20%;
   background-color: orange;
-  display: flex;
-  justify-content: center;
+  display: grid;
   align-items: center;
   text-align: center;
-  flex-direction: column;
+  grid-template-rows: 3fr 1fr;
+}
+
+.addToCartButton {
+  cursor: pointer
 }
 
 .addToCart {
   display: flex;
-  height: 50%;
+  height: 30%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -122,6 +129,7 @@
   text-align: center;
   grid-template-columns: 1fr 1fr;
   width:100%;
+  height: 70%
 }
 
 .style {
@@ -162,8 +170,8 @@
   min-width: 400px;
   z-index: 0;
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-around;
+  gap: 2px;
 
 }
 
