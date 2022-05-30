@@ -8,9 +8,10 @@ var DropdownContainer = function (props) {
   var skusAsArray = function(skus) {
     return Object.keys(skus);
   };
+
   return (
     <div className = 'dropdownContainer'>
-      <SizeDropdown skus = {props.skus} key = {skusAsArray(props.skus)}/>
+      <SizeDropdown skus = {props.skus} key = {skusAsArray(props.skus)} gSku = {props.gSku}/>
       <AddToCart/>
     </div>
   );

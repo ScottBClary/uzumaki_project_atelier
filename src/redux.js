@@ -4,6 +4,9 @@ var initialState = {
   styleIndex: 0,
   styleThumbnailIndex: 0,
   cart: [],
+  sku: undefined,
+  quantity: 1,
+  tryingToBuy: false,
 };
 var reducer = function(state = initialState, action) {
 
@@ -13,16 +16,29 @@ var reducer = function(state = initialState, action) {
     newState.productInfo = action.value;
     newState.styleIndex = 0;
     newState.styleThumbnailIndex = 0;
+    newState.quantity = 1;
     break;
   case 'changeStyleIndex' :
     newState.styleIndex = action.value;
     newState.styleThumbnailIndex = 0;
+    newState.quantity = 1;
     break;
   case 'changeStyleThumbnailIndex' :
     newState.styleThumbnailIndex = action.value;
     break;
+  case 'changeSku' :
+    newState.sku = action.value;
+    break;
+  case 'changeQuantity' :
+    newState.quantity = action.value;
+    break;
   case 'addToCart' :
-    newState.cart.push(action.value);
+    newState.tryingToBuy = true;
+    if (state.sku !== undefined && state.quantity !== 0) {
+      newState.cart = JSON.parse(JSON.stringify(state.cart));
+      newState.cart.push({id: state.sku.id, quantity: state.quantity});
+    }
+    break;
   }
   return newState;
 };

@@ -101,6 +101,15 @@
   text-align: center;
 }
 
+.pickSizeErrorMessage {
+  z-index: 1,
+
+}
+
+.errorMessageDiv {
+
+}
+
 .quantityDropdown {
     flex-grow: 1;
 

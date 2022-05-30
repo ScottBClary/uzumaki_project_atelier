@@ -61,7 +61,7 @@ var productInfo = {
           'size': 'S'
         },
         '2390359': {
-          'quantity': 17,
+          'quantity': 0,
           'size': 'M'
         },
         '2390360': {

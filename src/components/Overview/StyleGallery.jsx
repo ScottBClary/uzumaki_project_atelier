@@ -90,10 +90,18 @@ class StyleGallery extends React.Component {
 
 
   render() {
+    var hideRight = false;
+    var hideLeft = false;
+    if (this.state.first === 0) {
+      hideLeft = true;
+    }
+    if (this.state.first === (this.state.max - 4)) {
+      hideRight = true;
+    }
     return <div className = 'styleGallery'>
-      <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'left'/>
+      {!hideLeft && <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'left'/>}
       {this.renderThumbnails()}
-      <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'right'/>
+      {!hideRight && <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'right'/>}
 
     </div>;
   }

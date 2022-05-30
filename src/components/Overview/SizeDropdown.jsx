@@ -1,5 +1,6 @@
 
 import React from 'react';
+import {Fragment} from 'react';
 import QuantityDropdown from './QuantityDropdown.jsx';
 import store from '../../redux.js';
 class SizeDropdown extends React.Component {
@@ -9,13 +10,17 @@ class SizeDropdown extends React.Component {
     this.getOptions = this.getOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.skusAsArray = this.skusAsArray.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.getErrorMessage = this.getErrorMessage.bind(this);
     this.state = {
       selectedIndex: 0,
       skus: props.skus,
       skusAsArray: this.skusAsArray(props.skus),
+      sizeSelected: false,
+      displayError: false,
     };
+    store.subscribe(this.handleChange);
   }
-
 
   skusAsArray(skus = {}) {
     var keys = Object.keys(skus);
@@ -40,6 +45,9 @@ class SizeDropdown extends React.Component {
     }
 
     result = result.map((sku) => {
+      if (sku.info.quantity === 0) {
+        return;
+      }
       return <option sku={JSON.stringify(sku)} key={JSON.stringify(sku.id)}>{sku.info.size}</option>;
     });
 
@@ -60,24 +68,52 @@ class SizeDropdown extends React.Component {
     //     selectedSku: newSku,
     //   };
     // });
+    store.dispatch({type: 'changeSku', value: this.state.skusAsArray[e.target.selectedIndex]});
     this.setState((oldState) => {
+
       return {selectedIndex: e.target.selectedIndex,
         skus: oldState.skus,
-        skusAsArray: oldState.skusAsArray};
+        skusAsArray: oldState.skusAsArray,
+        sizeSelected: true,
+        displayError: oldState.displayError,
+      };
     });
-
   }
 
+  handleChange() {
+    if (store.getState().tryingToBuy && !this.state.sizeSelected) {
+      this.setState((oldState) => {
 
+        return {
+          selectedIndex: oldState.selectedIndex,
+          skus: oldState.skus,
+          skusAsArray: oldState.skusAsArray,
+          sizeSelected: false,
+          displayError: true,
+        };
+      });
+    }
+  }
+  getErrorMessage() {
+    var result = [];
+    if (this.state.displayError) {
+      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage'>Please pick a size.</div></div>);
+    } else {
+      result.push(<div>Size</div>);
+    }
 
+    return result;
+  }
   render() {
     console.log('size dropdown rendered');
     return <div className = 'sizeDropdown'>
-      <div><div>Size</div>
+      <div>
+        {this.getErrorMessage()}
         <select onChange={this.handleClick}>
+          <option value="none" selected = {true} disabled hidden>Select Size</option>
           {this.getOptions(this.state.skus)}
         </select></div>
-      <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]}/>
+      <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} />
     </div>;
   }
 

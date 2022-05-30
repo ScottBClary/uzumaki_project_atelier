@@ -16,11 +16,29 @@ class ProductDetail extends React.Component {
     this.state = {
       product: props.product,
       currentStyleIndex: 0,
-      currentStyle: {},
-      currentSkus: [],
+      currentStyle: props.product.styles[0],
+      currentSkus: props.product.styles[0].skus,
+      currentQuantity: 0,
+      currentSku: undefined,
     };
+    this.gSku = this.gSku.bind(this);
     this.onChange = this.onChange.bind(this);
     store.subscribe(this.onChange);
+  }
+  //This function will be called by cart,
+  buy() {}
+  gSku(quantity, theSku) {
+    this.setState((oldState) => {
+      return {
+        product: oldState.product,
+        currentStyleIndex: oldState.currentStyleIndex,
+        currentStyle: oldState.currentStyle,
+        currentSkus: oldState.currentSkus,
+        currentQuantity: quantity,
+        currentSku: theSku,
+      };
+    });
+
   }
 
   onChange() {
@@ -51,11 +69,11 @@ class ProductDetail extends React.Component {
 
       </div>
       <div className = 'groupDivRight'>
-        <ProductDescription desc = {this.state.product.description || ''}></ProductDescription>
+        <ProductDescription desc = {this.state.product.description || ''} ></ProductDescription>
         <StyleSelector styles = {[]}>
 
         </StyleSelector>
-        <DropdownContainer skus = {this.state.currentSkus}/>
+        <DropdownContainer skus = {this.state.currentSkus} key={this.state.currentSkus} gSku = {this.gSku}/>
 
       </div>
 

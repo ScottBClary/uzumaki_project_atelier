@@ -1,5 +1,5 @@
 import React from 'react';
-import Store from '../../redux.js';
+import store from '../../redux.js';
 class AddToCart extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +7,7 @@ class AddToCart extends React.Component {
 
   render() {
     return <div className = 'addToCart'>
-      <button>Add to Cart</button>
+      <button onClick = {() => {store.dispatch({type: 'addToCart', value: 1});}}>Add to Cart</button>
     </div>;
   }
 }
