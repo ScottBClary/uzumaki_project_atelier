@@ -3,6 +3,7 @@ import React from 'react';
 import {Fragment} from 'react';
 import QuantityDropdown from './QuantityDropdown.jsx';
 import store from '../../redux.js';
+import PriceLabel from './PriceLabel.jsx';
 class SizeDropdown extends React.Component {
 
   constructor(props) {
@@ -82,7 +83,8 @@ class SizeDropdown extends React.Component {
   }
 
   handleChange() {
-    if (store.getState().tryingToBuy && !this.state.sizeSelected) {
+    var theStore = store.getState();
+    if (theStore.tryingToBuy && !this.state.sizeSelected) {
       this.setState((oldState) => {
 
         return {
@@ -94,6 +96,7 @@ class SizeDropdown extends React.Component {
         };
       });
     }
+
   }
   getErrorMessage() {
     var result = [];
@@ -108,12 +111,15 @@ class SizeDropdown extends React.Component {
   render() {
     console.log('size dropdown rendered');
     return <div className = 'sizeDropdown'>
-      <div>
+      <div className = 'sizeDropdownDiv'>
         {this.getErrorMessage()}
         <select onChange={this.handleClick} defaultValue = {'Select Size'}>
           <option value='Select Size' id ='default' key = {'someKey'}>Select Size</option>
           {this.getOptions(this.state.skus)}
         </select></div>
+      <div className = 'priceDiv'>
+        <PriceLabel/>
+      </div>
       <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} key='quantityDropdownKey'/>
     </div>;
   }

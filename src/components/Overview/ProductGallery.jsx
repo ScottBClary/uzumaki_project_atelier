@@ -47,7 +47,7 @@ class ProductGallery extends React.Component {
   }
 
   renderExitFullscreenButton() {
-    return <div className = 'exitFullscreenButton'><AiOutlineFullscreenExit onClick = {() => { this.props.changeView('default'); }}/></div>;
+    return <div className = 'exitFullscreenButton'><AiOutlineFullscreenExit onClick = {() => { this.props.changeView('default'); }} style = {{'pointer-events': 'painted'}}/></div>;
   }
 
   render() {

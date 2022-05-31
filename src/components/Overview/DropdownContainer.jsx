@@ -11,7 +11,7 @@ var DropdownContainer = function (props) {
 
   return (
     <div className = 'dropdownContainer'>
-      <SizeDropdown skus = {props.skus} key = {Object.keys(props.skus)} gSku = {props.gSku}/>
+      <SizeDropdown skus = {props.skus} key = {Object.keys(props.skus)}/>
       <AddToCart key = 'addToCartKey'/>
     </div>
   );

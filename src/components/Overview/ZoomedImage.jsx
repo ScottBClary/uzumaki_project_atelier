@@ -68,6 +68,8 @@ class ZoomedImage extends React.Component {
     var movingImageHeight = this.state.ref.current.offsetHeight;
     var movingImageWidth = this.state.ref.current.offsetWidth;
 
+    var yThing = this.state.refToStaticImage.current.offsetParent.offsetTop;
+
     var centerOfStaticImageX = staticImageX + (staticImageWidth / 2);
     cursorXOffsetFromStaticImageCenter = e.clientX - centerOfStaticImageX;
     var movingImageCenterX = staticImageX - cursorXOffsetFromStaticImageCenter - (movingImageWidth / 2);
@@ -77,7 +79,7 @@ class ZoomedImage extends React.Component {
     this.state.ref.current.style.left = howMuchToMove + 'px';
     percentMoved = (staticImageY - e.clientY) / staticImageHeight;
     howMuchToMove = percentMoved * (movingImageHeight - staticImageHeight);
-    this.state.ref.current.style.top = howMuchToMove + 'px';
+    this.state.ref.current.style.top = howMuchToMove + yThing + 'px';
   }
 
   render() {
