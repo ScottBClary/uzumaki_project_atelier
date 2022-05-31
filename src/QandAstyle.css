@@ -221,3 +221,13 @@
 .answer-modal-close:hover {
   border: 2px solid black;
 }
+
+.image-inputs {
+  display: flex;
+  flex-direction: column
+}
+
+.image-input-url,
+.image-add-button {
+  display: inline-block;
+}

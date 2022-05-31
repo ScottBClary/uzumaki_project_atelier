@@ -22,17 +22,16 @@ class AddQModal extends React.Component {
   }
 
   addQuestion() {
-    console.log(this.state.question, this.state.nickname, this.state.email, this.state.productId);
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',
-      { body: {
+      {
         'body': this.state.question,
         'name': this.state.nickname,
         'email': this.state.email,
         'product_id': this.state.productId
       },
-      headers: {
-        'Authorization': process.env.API_TOKEN
-      }
+      {
+        headers:
+        {'Authorization': process.env.API_TOKEN}
       }
     )
       .then((response) => {

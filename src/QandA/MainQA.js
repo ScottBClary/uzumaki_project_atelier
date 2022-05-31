@@ -49,6 +49,7 @@ class MainQA extends React.Component {
       questionModalOpened: !this.state.questionModalOpened
     });
   }
+
   render() {
     return (
       <div>
