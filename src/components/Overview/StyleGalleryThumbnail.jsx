@@ -1,18 +1,27 @@
 
 import React from 'react';
-
+import {BsCircle, BsCheckCircle} from 'react-icons/bs';
 var StyleGalleryThumbnail = function (props) {
-
-
-  if (!props.isSelected) {
-    return <div className = 'styleGalleryThumbnail'>
-      <img className = 'resizableImage' src = {props.image} onClick = {() => { props.handleClick(props.index); }}></img>
-    </div>;
+  if (props.isIcon) {
+    if (!props.isSelected) {
+      return <div className = 'styleGalleryIcon' onClick = {() => { props.handleClick(props.index); }}>
+        <BsCircle></BsCircle>
+      </div>;
+    } else {
+      return <div className = 'styleGalleryIcon' onClick = {() => { props.handleClick(props.index); }}>
+        <BsCheckCircle></BsCheckCircle>
+      </div>;
+    }
   } else {
-    return <div className = 'styleGalleryThumbnailSelected'>
-      <p className = 'thumbnailFloatingCheck'>✅</p>
-      <img className = 'resizableImage' src = {props.image} onClick = {() => { props.handleClick(props.index); }}></img>
-    </div>;
+    if (!props.isSelected) {
+      return <div className = 'styleGalleryThumbnail'>
+        <img className = 'resizableImage' src = {props.image} onClick = {() => { props.handleClick(props.index); }}></img>
+      </div>;
+    } else {
+      return <div className = 'styleGalleryThumbnailSelected'>
+        <img className = 'resizableImage' src = {props.image} onClick = {() => { props.handleClick(props.index); }}></img>
+      </div>;
+    }
   }
 };
 // this.state = {

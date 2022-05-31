@@ -94,25 +94,45 @@ class StyleGallery extends React.Component {
     for (var i = this.state.first; i < (this.state.first + this.state.numberOfThumbnails) && i < (this.state.max); i++) {
       result.push( <StyleGalleryThumbnail key = {i} index = {i} isSelected = {i === this.state.selectedIndex} image = {ps[this.state.selectedStyle].photos[i].thumbnail_url} handleClick = {this.onClick} ></StyleGalleryThumbnail>);
     }
+    return result;
+  }
 
+  renderIcons() {
+    var ps = store.getState().productInfo.styles;
+    var result = [];
+    for (var i = 0; i < (this.state.max); i++) {
+      result.push( <StyleGalleryThumbnail key = {i} index = {i} isSelected = {i === this.state.selectedIndex} image = {ps[this.state.selectedStyle].photos[i].thumbnail_url} handleClick = {this.onClick} isIcon = {true}></StyleGalleryThumbnail>);
+    }
     return result;
   }
 
 
-
   render() {
-    var hideRight = false;
-    var hideLeft = false;
+    var theClassName;
+    if (this.props.view === 'expanded') {
+      theClassName = 'expandedStyleGallery';
+    } else {
+      theClassName = 'styleGallery';
+    }
+    var hideRight = 'visible';
+    var hideLeft = 'visible';
     if (this.state.first === 0) {
-      hideLeft = true;
+      hideLeft = 'hidden';
     }
     if (this.state.first >= (this.state.max - this.state.numberOfThumbnails)) {
-      hideRight = true;
+      hideRight = 'hidden';
     }
-    return <div className = 'styleGallery'>
-      {!hideLeft && <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'left'/>}
+
+    if (theClassName === 'expandedStyleGallery') {
+      return <div className = {theClassName}>
+        {this.renderIcons()}
+      </div>;
+    }
+
+    return <div className = {theClassName}>
+      {<GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'left' visibility = {hideLeft}/>}
       {this.renderThumbnails()}
-      {!hideRight && <GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'right'/>}
+      {<GalleryArrow className = 'galleryArrowRow' onClick = {this.onMove} direction = 'right' visibility = {hideRight}/>}
 
     </div>;
   }

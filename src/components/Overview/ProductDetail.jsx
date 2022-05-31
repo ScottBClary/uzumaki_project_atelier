@@ -18,28 +18,13 @@ class ProductDetail extends React.Component {
       currentStyleIndex: 0,
       currentStyle: props.product.styles[0],
       currentSkus: props.product.styles[0].skus,
-      currentQuantity: 0,
-      currentSku: undefined,
+      view: 'default',
     };
-    this.gSku = this.gSku.bind(this);
+    this.changeView = this.changeView.bind(this);
     this.onChange = this.onChange.bind(this);
     store.subscribe(this.onChange);
   }
   //This function will be called by cart,
-  buy() {}
-  gSku(quantity, theSku) {
-    this.setState((oldState) => {
-      return {
-        product: oldState.product,
-        currentStyleIndex: oldState.currentStyleIndex,
-        currentStyle: oldState.currentStyle,
-        currentSkus: oldState.currentSkus,
-        currentQuantity: quantity,
-        currentSku: theSku,
-      };
-    });
-
-  }
 
   onChange() {
     var theStore = store.getState();
@@ -49,35 +34,60 @@ class ProductDetail extends React.Component {
         currentStyleIndex: theStore.styleIndex,
         currentStyle: theStore.productInfo.styles[theStore.styleIndex],
         currentSkus: theStore.productInfo.styles[theStore.styleIndex].skus,
+        view: oldState.view,
       };
     });
 
   }
 
-  changeView() {
-
+  changeView(newView) {
+    var theStore = store.getState();
+    this.setState((oldState) => {
+      return {
+        product: theStore.productInfo,
+        currentStyleIndex: theStore.styleIndex,
+        currentStyle: theStore.productInfo.styles[theStore.styleIndex],
+        currentSkus: theStore.productInfo.styles[theStore.styleIndex].skus,
+        view: newView,
+      };
+    });
   }
 
   render() {
-    return <div className = 'productDetail'>
-      <div className = 'groupDivLeft'>
-        <StyleGallery></StyleGallery>
+
+    if (this.state.view === 'default') {
+      return <div className = 'productDetail'>
+
+        <div className = 'groupDivLeft' style = {{width: '50%'}}>
+
+          <StyleGallery view = {this.state.view} ></StyleGallery>
+          <ProductGallery view = {this.state.view} changeView = {this.changeView}/>
+
+        </div>
 
 
-        <ProductGallery/>
+        <div className = 'groupDivRight'>
+          <ProductDescription desc = {this.state.product.description || ''} ></ProductDescription>
+          <StyleSelector styles = {[]}>
+          </StyleSelector>
+          <DropdownContainer skus = {this.state.currentSkus} key={Object.keys(this.state.currentSkus)}/>
+        </div>
 
 
-      </div>
-      <div className = 'groupDivRight'>
-        <ProductDescription desc = {this.state.product.description || ''} ></ProductDescription>
-        <StyleSelector styles = {[]}>
+      </div>;
+    }
+    if (this.state.view === 'expanded') {
+      return <div className = 'productDetail'>
 
-        </StyleSelector>
-        <DropdownContainer skus = {this.state.currentSkus} key={this.state.currentSkus} gSku = {this.gSku}/>
+        <div className = 'groupDivLeft' style = {{width: '100%'}}>
 
-      </div>
+          <StyleGallery view = {this.state.view}></StyleGallery>
+          <ProductGallery changeView = {this.changeView} view = {this.state.view}/>
 
-    </div>;
+        </div>
+
+      </div>;
+    }
   }
 }
 

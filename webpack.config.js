@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.(jsx|js)$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       },
 
       //second rule is to check for css files and load them with the following loaders

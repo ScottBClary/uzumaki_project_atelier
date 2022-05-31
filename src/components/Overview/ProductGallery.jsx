@@ -2,6 +2,8 @@
 import React from 'react';
 import store from '../../redux.js';
 import GalleryArrow from './GalleryArrow.jsx';
+import {AiOutlineFullscreenExit} from 'react-icons/ai';
+import ZoomedImage from './ZoomedImage.jsx';
 class ProductGallery extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ class ProductGallery extends React.Component {
       max: theStore.productInfo.styles[theStore.styleIndex].photos.length,
 
     };
+    this.renderExitFullscreenButton = this.renderExitFullscreenButton.bind(this);
     this.onClick = this.onClick.bind(this);
     this.hasChanged = this.hasChanged.bind(this);
     store.subscribe(this.hasChanged);
@@ -43,6 +46,10 @@ class ProductGallery extends React.Component {
     }
   }
 
+  renderExitFullscreenButton() {
+    return <div className = 'exitFullscreenButton'><AiOutlineFullscreenExit onClick = {() => { this.props.changeView('default'); }}/></div>;
+  }
+
   render() {
     var hideRight = false;
     var hideLeft = false;
@@ -52,14 +59,22 @@ class ProductGallery extends React.Component {
     if (this.state.currentIndex === (this.state.max - 1)) {
       hideRight = true;
     }
-    return <div className = 'productGallery'>
+    var theClassName;
+    if (this.props.view === 'expanded') {
+      theClassName = 'expandedProductGallery';
+    } else {
+      theClassName = 'productGallery';
+    }
+    return <div className = {theClassName}>
       <div className = 'galleryDiv'>
         {!hideLeft && <GalleryArrow direction = 'left' onClick = {this.onClick}></GalleryArrow>}
       </div>
-      <img src = {this.state.currentPicture} className = 'resizableImage'></img>
+      {theClassName === 'expandedProductGallery' && <ZoomedImage src = {this.state.currentPicture} className = 'resizableImage' key = {this.state.currentPicture}></ZoomedImage>}
+      {theClassName === 'productGallery' && <img src = {this.state.currentPicture} className = 'resizableImage' onClick = {() => { this.props.changeView('expanded'); }}></img>}
       <div className = 'galleryDiv'>
         {!hideRight && <GalleryArrow direction = 'right' onClick = {this.onClick}></GalleryArrow>}
       </div>
+      {theClassName === 'expandedProductGallery' && this.renderExitFullscreenButton()}
     </div>;
   }
 }

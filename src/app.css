@@ -1,3 +1,72 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+	padding: 0!important;
+	border: 0!important;
+	font-size: 100%!important;
+	font: inherit!important;
+	vertical-align: baseline !important;
+}
+
+.gg-math-minus {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 10px
+}
 
 .productDetail {
   position: relative;
@@ -7,10 +76,9 @@
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
-  height: 600px;
+  height: 700px;
   border-style: solid;
-  background-color: lightblue;
-
+ justify-content: center;
 }
 
 .productDescription {
@@ -27,7 +95,7 @@
 
   width: 100%;
   height: 70%;
-  background-color: green;
+
   min-width: 200px;
   display: flex;
   justify-content: space-around;
@@ -36,6 +104,50 @@
 
 }
 
+.expandedProductGallery {
+  width: 100%;
+  height: 90%;
+  min-width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* .expandedProductGallery img {
+  /* max-width: 65%;
+  /* cursor: url(./assets/img/minus--v1.png) 0 0, auto; */
+  /* cursor: url(https://www.shareicon.net/data/16x16/2015/08/25/90542_minus_512x512.png), auto;
+}
+*/
+.expandedImage {
+  cursor: url(https://www.shareicon.net/data/16x16/2015/08/25/90542_minus_512x512.png), auto;
+  height: 100%;
+}
+
+.zoomedPicture {
+  position: absolute;
+  pointer-events:none;
+  overflow: hidden;
+  max-width: 80vw;
+  max-height: 80vw
+
+}
+
+.zoomedPictureDiv {
+  position: relative;
+  /*
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  object-fit: scale-down;
+  max-width: 100%; */
+  overflow: hidden;
+
+  height: 100%;
+}
+
+
 .productGallery img {
   max-width: 65%;
   cursor: -moz-zoom-in;
@@ -43,6 +155,7 @@
   cursor: zoom-in;
 
 }
+
 
 
 
@@ -57,9 +170,8 @@
   justify-content: space-around;
   display: flex;
   flex-direction: column;
-  width: 50%;
+
   height: 100%;
-  background-color: firebrick;
   min-width: 400px;
 }
 
@@ -69,13 +181,14 @@
   flex: 0;
   background-color: yellow;
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   object-fit: scale-down;
   grid-template-rows: auto;
   justify-content: center;
   align-items: center;
   text-align: center;
-  overflow-y:auto
+  overflow-y:auto;
+  gap: 3px;
 }
 
 .resizableImage {
@@ -97,7 +210,8 @@
 }
 
 .addToCartButton {
-  cursor: pointer
+  cursor: pointer;
+  padding: 10px;
 }
 
 .addToCart {
@@ -129,7 +243,7 @@
   text-align: center;
   grid-template-columns: 1fr 1fr;
   width:100%;
-  height: 70%
+  height: 100%;
 }
 
 .style {
@@ -165,24 +279,57 @@
   left:0px;
   background: rgba(76, 175, 80, 0.3);
   width: 100%;
-
+  height: 100%;
   max-height: 30%;
   min-width: 400px;
   z-index: 0;
   display: flex;
   justify-content: space-around;
   gap: 2px;
+}
 
+.expandedStyleGallery {
+  position: relative;
+  top:0px;
+  left:0px;
+  background: rgba(76, 175, 80, 0.3);
+  width: 100%;
+  height: 10%;
+  max-height: 30%;
+  min-width: 400px;
+  z-index: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+}
+
+.styleGalleryIcon {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center
+}
+
+.styleGalleryIcon svg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90%;
+  align-items: center
 }
 
 .galleryArrow {
-  min-width: 70px;
-  max-width: 100px;
+  min-width: 8%;
+  max-width: 90px;
   flex-grow: 1;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.galleryArrow svg {
+  z-index: 100;
 }
 
 .galleryArrowRow {
@@ -203,9 +350,21 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
 }
 
+.exitFullscreenButton {
+  width: 10%;
+  display: flex;
+  position:absolute;
+  height: inherit;
+  right: 0;
+  pointer-events: painted;
+  flex-direction: column-reverse;
+}
+.exitFullscreenButton svg {
+  width: auto;
+  height: auto;
+}
 .styleGalleryThumbnailSelected {
   position: relative;
   display: flex;
@@ -213,6 +372,13 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.styleGalleryThumbnailSelected img {
+  z-index: 10;
+  box-shadow: 0 0 10px 10px rgb(228 121 17 / 90%);
+}
+
 .anotherDiv {
   height: 70%;
   display: flex;
@@ -228,6 +394,9 @@
 }
 
 .galleryDiv {
+  display: flex;
+  justify-content: center;
+  align-content: center;
   width: auto;
   min-width: 10%;
 }

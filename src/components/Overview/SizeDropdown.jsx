@@ -48,7 +48,8 @@ class SizeDropdown extends React.Component {
       if (sku.info.quantity === 0) {
         return;
       }
-      return <option sku={JSON.stringify(sku)} key={JSON.stringify(sku.id)}>{sku.info.size}</option>;
+      var temp = <option sku={JSON.stringify(sku)} id={sku.id} key={sku.id}>{sku.info.size}</option>;
+      return temp;
     });
 
     return result;
@@ -97,9 +98,9 @@ class SizeDropdown extends React.Component {
   getErrorMessage() {
     var result = [];
     if (this.state.displayError) {
-      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage' style = {{color: 'red'}}>Please pick a size.</div></div>);
+      result.push(<div className = 'errorMessageDiv' key = 'errorMessageKey'>Size<div className = 'pickSizeErrorMessage' style = {{color: 'red'}}>Please pick a size.</div></div>);
     } else {
-      result.push(<div className = 'errorMessageDiv'>Size<div className = 'pickSizeErrorMessage' style = {{visibility: 'hidden'}}>Please pick a size.</div></div>);
+      result.push(<div className = 'errorMessageDiv' key = 'errorMessageKey' >Size<div className = 'pickSizeErrorMessage' style = {{visibility: 'hidden'}}>Please pick a size.</div></div>);
     }
 
     return result;
@@ -109,11 +110,11 @@ class SizeDropdown extends React.Component {
     return <div className = 'sizeDropdown'>
       <div>
         {this.getErrorMessage()}
-        <select onChange={this.handleClick}>
-          <option value="none" selected = {true} disabled hidden>Select Size</option>
+        <select onChange={this.handleClick} defaultValue = {'Select Size'}>
+          <option value='Select Size' id ='default' key = {'someKey'}>Select Size</option>
           {this.getOptions(this.state.skus)}
         </select></div>
-      <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} />
+      <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} key='quantityDropdownKey'/>
     </div>;
   }
 

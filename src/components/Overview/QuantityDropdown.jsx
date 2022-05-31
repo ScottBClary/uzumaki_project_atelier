@@ -15,7 +15,7 @@ var QuantityDropdown = function(props) {
     return result;
   };
   var end = getOptions();
-  return <div className = 'quantityDropdown'>
+  return <div className = 'quantityDropdown' >
     <div>Quantity</div>
     <div style = {{visibility: 'hidden'}}>You can't see me. -JC</div>
     <select onChange={(e) => {
