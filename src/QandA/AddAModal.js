@@ -20,6 +20,7 @@ class AddAModal extends React.Component {
     this.answerInput = this.answerInput.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.addImage = this.addImage.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
   }
 
   answerInput(event) {
@@ -56,6 +57,17 @@ class AddAModal extends React.Component {
     });
   }
 
+  uploadImage() {
+    this.setState((prevState) => {
+      return {
+        photos: [...prevState.photos, {
+          id: prevState + 1,
+          url: event.target.value
+        }]
+      };
+    });
+  }
+
   render() {
     return (
       <div className='answer-modal'>
@@ -70,7 +82,7 @@ class AddAModal extends React.Component {
         <h3 className='add-answer-titles'>Email*</h3>
         <input placeholder={'Example: jack@email.com'} maxLength={60} name='email' onChange={(event, question) => this.answerInput(event, name)}></input>
         <span>For authentication reasons, you will be not be emailed</span>
-        {this.state.addingImage ? <AddImage photos={this.state.photos}/> : null}
+        {this.state.addingImage ? <AddImage uploadImage={this.uploadImage}/> : null}
         <button className='image-button' onClick={this.addImage}>upload images</button>
         <button className='add-answer-submit' onClick={this.addAnswer}>Submit</button>
       </div>
