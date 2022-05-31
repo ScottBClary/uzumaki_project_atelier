@@ -1,6 +1,7 @@
 import React from 'react';
 import OneQ from './OneQ';
 import axios from 'axios';
+import AddImage from './AddImage';
 
 class AddAModal extends React.Component {
   constructor(props) {

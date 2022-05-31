@@ -7,16 +7,32 @@ class OneA extends React.Component {
     this.state = {
       notReported: true,
       isSeller: false,
-      help: this.props.answer.helpfulness
+      help: this.props.answer.helpfulness,
+      increasedHelp: false
     };
     this.reportClick = this.reportClick.bind(this);
     this.date = this.date.bind(this);
+    this.addHelp = this.addHelp.bind(this);
   }
 
   reportClick() {
-    this.setState({
-      notReported: !this.state.notReported
-    });
+    if (this.state.notReported) {
+      this.setState({
+        notReported: !this.state.notReported
+      });
+      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${this.props.answer.id}/report`,
+        null,
+        {
+          params: {'answer_id': this.props.answer.id},
+          headers: {'Authorization': process.env.API_TOKEN}
+        })
+        .then((response) => {
+          console.log(response, 'response');
+        })
+        .catch((error) => {
+          console.log(error, 'error');
+        });
+    }
   }
 
   date() {
@@ -28,37 +44,39 @@ class OneA extends React.Component {
   }
 
   addHelp() {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${this.props.answer.id}/helful`,
-      null,
-      {
-        params: {'answer_id': this.props.answer.id},
-        headers: {'Authorization': process.env.API_TOKEN}
-      }
-    )
-      .then((response) => {
-        console.log(response, 'response');
-      })
-      .catch((error) => {
-        console.log(error, 'error');
-      });
+    if (!this.state.increasedHelp) {
+      this.setState((prevState) => ({
+        help: prevState.help + 1,
+        increasedHelp: !this.state.increasedHelp
+      }));
+      axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${this.props.answer.id}/helpful`,
+        {helpfulness: this.state.help},
+        {
+          params: {'answer_id': this.props.answer.id},
+          headers: {'Authorization': process.env.API_TOKEN}
+        }
+      )
+        .then((response) => {
+          console.log(response, 'response');
+        })
+        .catch((error) => {
+          console.log(error, 'error');
+        });
+    }
   }
 
   render() {
-    if (this.props.answer.answerer_name.toLowerCase() === 'seller') {
-      this.setState({
-        isSeller: !this.isSeller
-      });
-    }
+
     return (
       <div className='answer'>
         <div className='answer-text'>A: {this.props.answer.body}</div>
         <div>
           <span style={{fontWeight: 'normal'}}>by </span>
-          <span style={this.state.isSeller ? {fontWeight: 'bold'} : {fontWeight: 'normal'}}>{this.state.isSeller ? 'Seller' : this.props.answer.answerer_name}</span>
+          {this.props.answer.answerer_name.toLowerCase() === 'seller' ? <span style={{fontWeight: 'bold'}}>{this.props.answer.answerer_name}</span> : <span style={{fontWeight: 'normal'}}>{this.props.answer.answerer_name}</span>}
           <span style={{fontWeight: 'normal'}}> on {this.date()}</span>
         </div>
         <div className='answer-links'>
-          <button className='answer-help-link' onClick={this.addHelp}>Helpful? Yes {this.props.answer.helpfulness} |</button>
+          <button className='answer-help-link' onClick={this.addHelp}>Helpful? Yes {this.state.help} |</button>
           <button className='answer-report-link' onClick={this.reportClick}>{this.state.notReported ? 'Report' : 'Reported'}</button>
         </div>
         {this.props.answer.photos.map((photo, index) => <img src={photo.url} key ={index} alt='photo of product'/>)}
