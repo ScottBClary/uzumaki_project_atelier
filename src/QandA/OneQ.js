@@ -44,17 +44,21 @@ class OneQ extends React.Component {
   }
 
   render() {
-
+    if (this.state.answerModalOpened) {
+      return (
+        <AddAModal closeAnswerModal={this.openAnswerModal} questionId={this.props.question.question_id} question={this.props.question.question_body}/>
+        )
+    } else {
     return (
       <div className='question'>
         <div className='question-text'>Q: {this.props.question.question_body}</div>
         <div className='question-links'>
           <button className='question-help-link' onClick={this.addHelp}>Helpful? Yes {this.state.help}</button>
-          {this.state.answerModalOpened ? <AddAModal closeAnswerModal={this.openAnswerModal} questionId={this.props.question.question_id}/> : null}
           <button className='question-add-answer-link' onClick={this.openAnswerModal}>|  Add Answer</button>
         </div>
       </div>
     );
+    }
   }
 }
 

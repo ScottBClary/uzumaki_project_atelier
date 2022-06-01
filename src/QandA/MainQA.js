@@ -28,12 +28,9 @@ class MainQA extends React.Component {
         'Authorization': process.env.API_TOKEN
       }
     })
-    // axios.get('/qa/questions', {'product_id': this.state.productId, 'results': this.state.questions})
       .then((body) => {
-        console.log(body);
         this.setState({
           results: body.data.results,
-          // question: body.data.results.question_body,
           answers: body.data.results.answers
         });
       })
@@ -41,7 +38,6 @@ class MainQA extends React.Component {
         console.log('error:', error);
       })
       .then();
-    //for prevent default event explanation hitting the api around 15 min in
   }
 
   openQuestionModal() {

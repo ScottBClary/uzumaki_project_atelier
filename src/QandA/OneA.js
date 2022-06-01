@@ -80,7 +80,6 @@ class OneA extends React.Component {
           <button className='answer-report-link' onClick={this.reportClick}>{this.state.notReported ? 'Report' : 'Reported'}</button>
         </div>
         {this.props.answer.photos.map((photo, index) => <img src={photo.url} key ={index} alt='photo of product'/>)}
-        {/* <span className='answer-identifier'>by user, Month DD, YYYY</span> */}
         {/* <button>See More Answers or Collapse Answers</button> */}
       </div>
     );
