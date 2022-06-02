@@ -65,12 +65,17 @@ table {
   border-radius: 10px
 }
 .divLeftExpanded {
-  justify-content: space-around;
-  display: flex;
-  flex-direction: column;
-  width: 90vw;
   height: 90vw;
-  min-width: 400px;
+  width: 90vw;
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
+.productGalleryImageDiv {
+  height:100%;
+  width:100%;
+  overflow:hidden;
+  position: relative;
 }
 
 .productDetail {
@@ -114,9 +119,13 @@ table {
   width: 100%;
   height: 90%;
   min-width: 200px;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 100%;
+  align-content: center;
+  justify-content: center;
   align-items: center;
+  justify-items: center;
   flex-direction: row;
 }
 
@@ -138,6 +147,13 @@ table {
   width: 200%;
   height: 200%;
 
+}
+
+.zoomImage {
+  position:absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .zoomedPictureDiv {
@@ -314,13 +330,9 @@ table {
 
 .expandedStyleGallery {
   position: relative;
-  top:0px;
-  left:0px;
   background: rgba(76, 175, 80, 0.3);
   width: 100%;
-  height: 10%;
-  max-height: 30%;
-  min-width: 400px;
+  height: 100%;
   z-index: 0;
   display: flex;
   justify-content: space-around;
@@ -422,7 +434,7 @@ table {
   display: flex;
   justify-content: center;
   align-content: center;
-  width: auto;
+  width: 100%;
   min-width: 10%;
 }
 

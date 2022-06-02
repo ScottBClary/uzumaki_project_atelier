@@ -77,14 +77,10 @@ class ProductDetail extends React.Component {
       </div>;
     }
     if (this.state.view === 'expanded') {
-      return <div className = 'productDetail'>
+      return <div className = 'divLeftExpanded' style = {{width: '100%'}}>
 
-        <div className = 'divLeftExpanded' style = {{width: '100%'}}>
-
-          <StyleGallery view = {this.state.view}></StyleGallery>
-          <ProductGallery changeView = {this.changeView} view = {this.state.view}/>
-
-        </div>
+        <StyleGallery view = {this.state.view}></StyleGallery>
+        <ProductGallery changeView = {this.changeView} view = {this.state.view}/>
 
       </div>;
     }

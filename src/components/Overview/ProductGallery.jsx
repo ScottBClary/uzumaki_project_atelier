@@ -4,6 +4,7 @@ import store from '../../redux.js';
 import GalleryArrow from './GalleryArrow.jsx';
 import {AiOutlineFullscreenExit} from 'react-icons/ai';
 import ZoomedImage from './ZoomedImage.jsx';
+import ProductGalleryImageDiv from './ProductGalleryImageDiv.jsx';
 class ProductGallery extends React.Component {
   constructor(props) {
     super(props);
@@ -47,7 +48,7 @@ class ProductGallery extends React.Component {
   }
 
   renderExitFullscreenButton() {
-    return <div className = 'exitFullscreenButton'><AiOutlineFullscreenExit onClick = {() => { this.props.changeView('default'); }} style = {{'pointer-events': 'painted'}}/></div>;
+    return <div className = 'exitFullscreenButton'><AiOutlineFullscreenExit onClick = {() => { this.props.changeView('default'); }}/></div>;
   }
 
   render() {
@@ -69,7 +70,7 @@ class ProductGallery extends React.Component {
       <div className = 'galleryDiv'>
         {!hideLeft && <GalleryArrow direction = 'left' onClick = {this.onClick}></GalleryArrow>}
       </div>
-      {theClassName === 'expandedProductGallery' && <ZoomedImage src = {this.state.currentPicture} className = 'resizableImage' key = {this.state.currentPicture}></ZoomedImage>}
+      {theClassName === 'expandedProductGallery' && <ProductGalleryImageDiv src = {this.state.currentPicture} onClick = {() => { this.props.changeView('expanded'); }}></ProductGalleryImageDiv>}
       {theClassName === 'productGallery' && <img src = {this.state.currentPicture} className = 'resizableImage' onClick = {() => { this.props.changeView('expanded'); }}></img>}
       <div className = 'galleryDiv'>
         {!hideRight && <GalleryArrow direction = 'right' onClick = {this.onClick}></GalleryArrow>}

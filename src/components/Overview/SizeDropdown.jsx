@@ -118,7 +118,7 @@ class SizeDropdown extends React.Component {
           {this.getOptions(this.state.skus)}
         </select></div>
       <div className = 'priceDiv'>
-        <PriceLabel/>
+        <PriceLabel price = {store.getState().productInfo.styles[store.getState().styleIndex].sale_price}/>
       </div>
       <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} key='quantityDropdownKey'/>
     </div>;
