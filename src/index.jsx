@@ -5,8 +5,11 @@ import { createRoot } from 'react-dom/client';
 import ProductDetail from './components/Overview/ProductDetail.jsx';
 import styles from './app.css';
 import store from './redux.js';
+import MainQA from './QandA/MainQA.js';
+import axios from 'axios';
 
 const root = createRoot(document.getElementById('root'));
+import ReviewParent from './components/reviews/reviewParent.jsx';
 
 var productInfo = {
   'id': 66642,
@@ -381,9 +384,17 @@ var productInfo = {
 //Add star-rating to productInfo before giving to productDetail
 productInfo.rating = 2.7;
 const App = () => {
-  return <div id='AppDiv'>
+  return ( <React.Fragment>
+    <h1>
+      Hello World!
+    </h1>
     <ProductDetail product = {productInfo}></ProductDetail>
-  </div>;
+    <div>
+      <ReviewParent />
+      <MainQA/>
+    </div>
+  </React.Fragment>
+  );
 };
 
 
