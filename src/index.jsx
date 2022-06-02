@@ -378,6 +378,8 @@ var productInfo = {
 
 //change to jsx once babel is set up
 //Give html elements ID's so we can change with CSS?
+//Add star-rating to productInfo before giving to productDetail
+productInfo.rating = 2.7;
 const App = () => {
   return <div id='AppDiv'>
     <ProductDetail product = {productInfo}></ProductDetail>

@@ -21,7 +21,7 @@ class GetZoom extends React.Component {
   }
 
   setDefault() {
-    console.log('setting default');
+    // console.log('setting default');
     this.state.theRef.current.style.position = 'relative';
     this.state.theRef.current.style.width = 'auto';
     this.state.theRef.current.style.height = 'auto';
@@ -72,7 +72,7 @@ class GetZoom extends React.Component {
     } else {
       this.setDefault();
     }
-    console.log(this.state.theRef.current.iszoomed);
+    // console.log(this.state.theRef.current.iszoomed);
 
   }
 
@@ -97,17 +97,17 @@ class GetZoom extends React.Component {
     var heightDiff = this.state.theRef.current.offsetHeight - parentHeight;
     var moveLeft = 0 - (percentX * widthDiff);
     var moveTop = 0 - (percentY * heightDiff);
-    console.log(percentX);
-    console.log(percentY);
-    console.log('clientX is ' + e.clientX);
+    // console.log(percentX);
+    // console.log(percentY);
+    // console.log('clientX is ' + e.clientX);
     if (this.state.theRef.current.iszoomed === 'true') {
       this.state.theRef.current.style.left = moveLeft + 'px';
       this.state.theRef.current.style.top = moveTop + 'px';
     }
-    console.log(parent.offsetLeft);
+    // console.log(parent.offsetLeft);
   }
   mouseLeaveFunc() {
-    console.log('mouse out');
+    // console.log('mouse out');
     this.setDefault();
     //console.log('left');
   }
@@ -118,7 +118,7 @@ class GetZoom extends React.Component {
     return <div className = 'productGalleryImageDiv' ref = {this.state.parentRef} onMouseMove = {(e) => { this.mouseMove(e);}} onMouseLeave = {this.mouseLeaveFunc}><img src = {this.props.src} ref = {this.state.theRef} onClick = {this.clicker} ></img></div>;
   }
   componentDidMount() {
-    console.log('component mounted');
+    // console.log('component mounted');
     this.setDefault();
   }
 

@@ -110,6 +110,7 @@ class SizeDropdown extends React.Component {
   }
   render() {
     console.log('size dropdown rendered');
+    var theStore = store.getState();
     return <div className = 'sizeDropdown'>
       <div className = 'sizeDropdownDiv'>
         {this.getErrorMessage()}
@@ -118,7 +119,7 @@ class SizeDropdown extends React.Component {
           {this.getOptions(this.state.skus)}
         </select></div>
       <div className = 'priceDiv'>
-        <PriceLabel price = {store.getState().productInfo.styles[store.getState().styleIndex].sale_price}/>
+        <PriceLabel sale_price = {theStore.productInfo.styles[store.getState().styleIndex].sale_price} original_price = {theStore.productInfo.styles[store.getState().styleIndex].original_price}/>
       </div>
       <QuantityDropdown sku = {this.state.skusAsArray[this.state.selectedIndex]} key='quantityDropdownKey'/>
     </div>;

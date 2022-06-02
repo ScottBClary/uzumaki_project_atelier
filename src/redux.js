@@ -7,6 +7,7 @@ var initialState = {
   sku: undefined,
   quantity: 1,
   tryingToBuy: false,
+  rating: 0.66,
 };
 var reducer = function(state = initialState, action) {
 
