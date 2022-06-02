@@ -12,7 +12,13 @@ class AddImage extends React.Component {
         id: 0,
         url: ''
       },
-      addingThumbnail: false
+      addingThumbnail1: false,
+      addingThumbnail2: false,
+      addingThumbnail3: false,
+      addingThumbnail4: false,
+      addingThumbnail5: false,
+      thumbnailCount: 1
+
     };
     this.makeThumbnail = this.makeThumbnail.bind(this);
     // this.liftPhotoState = this.liftPhotoState.bind(this);
@@ -29,9 +35,12 @@ class AddImage extends React.Component {
     });
   }
   makeThumbnail() {
+    event.preventDefault();
+    var currentThumbnail = 'addingThumbnail' + this.state.thumbnailCount;
     this.setState({
       currentPhotos: this.state.currentPhotos.concat(this.state.currentPhoto),
-      addingThumbnail: true
+      [currentThumbnail]: true,
+      thumbnailCount: this.state.thumbnailCount + 1
     });
 
     this.props.photos.push(this.state.currentPhoto);
@@ -40,14 +49,22 @@ class AddImage extends React.Component {
       currentPhoto: {
         id: this.state.currentPhoto.id,
         url: ''
-      }
+      },
     });
+
   }
   render() {
     return (
       <div className='image-modal'>
-        {this.state.addingThumbnail ? <div>thumbnail here</div> : null}
-        <input key={this.state.currentPhoto.url} className='image-input-url' placeholder={'add image url here'} onInput={this.addPhotoInfo}></input><button className='image-add-button' onClick={this.makeThumbnail}>add image</button>
+{/*
+          {this.state.addingThumbnail1 ? <div className='thumbnail'>image here</div> : null}
+          {this.state.addingThumbnail2 ? <div className='thumbnail'>image here</div> : null} */}
+          {this.state.addingThumbnail3 ? <img src={{uri: event.target.value}} alt=''/> : null}
+          {this.state.addingThumbnail4 ? <img src={{uri: this.state.currentPhoto.url}}/> : null}
+          {this.state.addingThumbnail5 ? <div className='thumbnail'><img src={this.state.currentPhoto.url}/></div> : null}
+
+        <input value={this.state.currentPhoto.url || ''} className='image-input-url' placeholder={'add image url here'} onInput={this.addPhotoInfo}></input>
+        <button className='image-add-button' onClick={this.makeThumbnail}>add image</button>
         <button>Done</button>
         {/* <input className='image-input-url' placeholder={'add image url here'}></input><button className='image-add-button' onClick={this.uploadImage()}>add image</button>
         <input className='image-input-url' placeholder={'add image url here'}></input><button className='image-add-button' onClick={this.uploadImage()}>add image</button>

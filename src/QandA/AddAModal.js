@@ -17,13 +17,17 @@ class AddAModal extends React.Component {
       ],
       questionId: '',
       addingImage: false,
-      photoNumber: 1
+      photoNumber: 1,
+      // addingThumbnail1: false,
+      // addingThumbnail2: false,
+      // addingThumbnail3: false,
+      // addingThumbnail4: false,
+      // addingThumbnail5: false,
+      // thumbnailCount: 1
     };
     this.answerInput = this.answerInput.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.addImage = this.addImage.bind(this);
-    this.liftPhotoState = this.liftPhotoState.bind(this);
-    // this.uploadImage = this.uploadImage.bind(this)
   }
 
   answerInput(event) {
@@ -60,26 +64,6 @@ class AddAModal extends React.Component {
     });
   }
 
-  liftPhotoState(state) {
-    //once all pictures are added, make state of photos equal to another array of photos
-    // this.props.photos = this.state.currentPhotos;
-    console.log('state', state);
-    this.setState({
-      photos: state
-    });
-
-  }
-  // uploadImage() {
-  //   this.setState((prevState) => {
-  //     return {
-  //       photos: [...prevState.photos, {
-  //         id: prevState.photos[prevState.photos.length - 1].id + 1,
-  //         url: event.target.value
-  //       }]
-  //     };
-  //   });
-  // }
-
   render() {
     return (
       <div className='answer-modal'>
@@ -95,7 +79,7 @@ class AddAModal extends React.Component {
         <input placeholder={'Example: jack@email.com'} maxLength={60} name='email' onChange={(event, question) => this.answerInput(event, name)}></input>
         <span>For authentication reasons, you will be not be emailed</span>
         <button className='image-button' onClick={this.addImage}>upload images</button>
-        {this.state.addingImage ? <AddImage photos={this.state.photos} liftPhotoState={this.liftPhotoState}/> : null}
+        {this.state.addingImage ? <AddImage photos={this.state.photos} /> : null}
         <button className='add-answer-submit' onClick={this.addAnswer}>Submit</button>
       </div>
     );
