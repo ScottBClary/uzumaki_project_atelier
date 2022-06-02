@@ -3,10 +3,16 @@ import React from 'react';
 import reactDom from 'react-dom';
 import { createRoot } from 'react-dom/client';
 const root = createRoot(document.getElementById('root'));
+import ReviewParent from './components/reviews/reviewParent.jsx';
 
 //change to jsx once babel is set up
 const App = () => {
-  return <h1>Hello World!</h1>;
+  return <React.Fragment>
+    <h1>
+      Hello World!
+    </h1>
+    <ReviewParent />
+  </React.Fragment>;
 };
 
 //render our app to the dom mounted to the element with id of root inside

@@ -1,0 +1,159 @@
+.centerRevItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.reviewCreate {
+  border: 1px solid red;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 50px;
+  z-index: 1000;
+  max-width: 50%;
+  min-width: 50%;
+  max-height: 50%;
+  min-height: 50%;
+}
+
+.addRevImage {
+  border: 1px solid red;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 50px;
+  z-index: 1000;
+  max-width: 20%;
+  min-width: 20%;
+  max-height: 20%;
+  min-height: 20%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+.ratings {
+  position: relative;
+  vertical-align: bottom;
+  display: inline-block;
+  color: #ECBE24;
+}
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.empty-stars {
+  font-size: 14pt;
+
+}
+
+.full-stars {
+  font-size: 14pt;
+}
+
+.reviewList {
+  border: 1px solid rgb(25, 0, 255);
+}
+
+.listItem {
+  border: 1px solid rgb(0, 99, 0)
+}
+
+.reviewParent {
+  border: 1px solid purple;
+}
+
+.star-desc {
+  min-width: 7ch;
+}
+
+.verticalCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.revBreakdown {
+  border: 1px solid yellowgreen;
+  width: 50ch;
+}
+
+.starRatings {
+  position: relative;
+  vertical-align: bottom;
+  color: rgb(202, 202, 202);
+  min-width: 10ch;
+}
+.full-starBars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 14pt;
+  max-height: 14pt;
+  background-color: rgb(0, 212, 0);
+  display: default;
+  font-size: 14pt;
+}
+
+.empty-starBars {
+  font-size: 14pt;
+  max-height: 14pt;
+  min-width: 10ch;
+  max-width: 100px;
+  background-color: rgb(202, 202, 202);
+  display: default;
+}
+
+.starPadding {
+  padding: 1px;
+  display: flex;
+  flex-direction: row;
+}
+
+.labelPadding {
+  padding-right: 10px;
+}
+
+.activeFilters {
+  display: flex;
+  flex-direction: row;
+}
+
+.divPadding {
+  padding: 5px
+}
+
+.charDivs {
+  max-height: 8px;
+  background-color: gray;
+}
+
+.charBars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.charFlag {
+  position: relative;
+  top: -3px;
+}
