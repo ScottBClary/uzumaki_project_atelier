@@ -1,6 +1,11 @@
 //For node to know out absolute file path we will be using the internal module path
 const path = require('path');
-const webpack = require('webpack');
+// const webpack = require('webpack');
+// const dotenv = require('dotenv');
+// dotenv.config();
+const Dotenv = require('dotenv-webpack');
+
+
 
 //Our export here is the configuration webpack we will use
 module.exports = {
@@ -24,14 +29,14 @@ module.exports = {
       //the first rule is to identify js and jsx files and turn on babel
       {
         test: /\.(jsx|js)$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
+        exclude: /node_module/,
+        loader: 'babel-loader'
       },
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }
+      },
     ]
   },
   //[devtool] this is an additional source map that will let the browser know what files
@@ -50,10 +55,18 @@ module.exports = {
     port: 3000,
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
-      },
-    }),
-  ]
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+    //   },
+    // }),
+    new Dotenv(),
+  ],
+  resolve: {
+    fallback: {
+      fs: false,
+      path: false,
+      os: false
+    }
+  }
 };
