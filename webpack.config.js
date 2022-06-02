@@ -29,14 +29,14 @@ module.exports = {
       //the first rule is to identify js and jsx files and turn on babel
       {
         test: /\.(jsx|js)$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
+        exclude: /node_module/,
+        loader: 'babel-loader'
       },
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }
+      },
     ]
   },
   //[devtool] this is an additional source map that will let the browser know what files
