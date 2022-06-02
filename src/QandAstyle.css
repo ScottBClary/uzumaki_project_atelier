@@ -234,13 +234,17 @@
   display: grid;
   border: 3px solid black;
   padding: 10px;
+  height: auto;
+  width: 300px;
 }
 
 .thumbnails {
   display: flex;
   flex-direction: row;
+  justify-content: center
 }
 
 .thumbnail {
   margin: 2px;
+  height: auto
 }
