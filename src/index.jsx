@@ -6,15 +6,19 @@ import MainQA from './QandA/MainQA.js';
 import axios from 'axios';
 
 const root = createRoot(document.getElementById('root'));
+import ReviewParent from './components/reviews/reviewParent.jsx';
 
 //change to jsx once babel is set up
 const App = () => {
-  return (
+  return ( <React.Fragment>
+    <h1>
+      Hello World!
+    </h1>
     <div>
-      <h1>Hello World!</h1>
+      <ReviewParent />
       <MainQA/>
     </div>
-
+  </React.Fragment>
   );
 };
 
