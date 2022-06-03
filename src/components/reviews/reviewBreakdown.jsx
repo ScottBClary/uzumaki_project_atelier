@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const API_TOKEN = process.env.API_TOKEN;
-
+console.log(API_TOKEN);
 export default class ReviewBreakdown extends React.Component {
   constructor(props) {
     super(props);
