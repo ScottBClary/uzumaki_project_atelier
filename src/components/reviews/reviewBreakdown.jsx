@@ -37,7 +37,7 @@ export default class ReviewBreakdown extends React.Component {
           revAgg += (element * body.data.ratings[element]);
           revTot += Number(body.data.ratings[element]);
         });
-        const revAvg = (revAgg / revTot).toFixed(2);
+        const revAvg = (revAgg / revTot).toFixed(1);
         const recommendAvg = Math.round(100 * (Number(body.data.recommended.true) / (Number(body.data.recommended.true) + Number(body.data.recommended.false))));
 
         charKeys.forEach((element) => {
@@ -102,54 +102,62 @@ export default class ReviewBreakdown extends React.Component {
     const percRec = Number(this.state.ratings) || 20;
     const selFilts = this.props.rawFilt.map((raw, index) => {
       if (raw === true) {
-        return <div key={index + 'starSelected'}>{index + 1} Star </div>;
+        return <div className='starSelected' key={index + 'starSelected'}>{(index + 1) + ' Star'}</div>;
       }
     });
     const SelButton = () => {
-      if (selFilts.length > 0) {
+      if (this.props.rawFilt.includes(true)) {
         return <button onClick={this.props.resFilt} id='activeFilters' className='activeFilters'>{selFilts}</button>;
       } else {
-        return null;
+        return <div className='placeholding'>1 Star 2 star 3 star 4 star 5 star </div>;
       }
     };
     return <React.Fragment>
       <div className='revBreakdown'>
-        <div className='revAverage'>rev avg{Number(this.state.ratings)}
-          <div className='ratings'>
-            <div className='empty-stars'>{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}</div>
-            <div className='full-stars' style={{width: (percRec * 20)}}>{'\u2605\u2605\u2605\u2605\u2605'}</div>
+        <div>
+          <h1 className='revAverage, centerRevItem'>{Number(this.state.ratings)}</h1>
+          <div className='centerRevItem'>
+            <div className='ratings'>
+              <div className='empty-stars'>{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}</div>
+              <div className='full-stars' style={{width: (percRec * 20)}}>{'\u2605\u2605\u2605\u2605\u2605'}</div>
+            </div>
           </div>
         </div>
-        <div className='revRecommended'>{this.state.recommended}% of reviews recommend this product</div>
-        <div className='starFilter' onClick={this.props.handleFilter}>
-          <div className='starPadding'><label id='5starButton' className='labelPadding'>5 Star</label>
-            <div className='starRatings'>
-              <div className='empty-starBars'>|</div>
-              <div className='full-starBars' style={{width: Number(this.state.starCounts['5']) / this.state.revTotal * 100 + '%' || 0}}></div>
+        <div className='centerRevItem'>
+          <div className='revRecommended'>{this.state.recommended}% of reviews recommend this product</div>
+        </div>
+        <div className='centerRevItem'>
+
+          <div className='starFilter' onClick={this.props.handleFilter}>
+            <div className='starPadding'><label id='5starButton' className='labelPadding'>5 Star</label>
+              <div className='starRatings'>
+                <div className='empty-starBars'>|</div>
+                <div className='full-starBars' style={{width: Number(this.state.starCounts['5']) / this.state.revTotal * 100 + '%' || 0}}></div>
+              </div>
             </div>
-          </div>
-          <div className='starPadding'><label id='4starButton' className='labelPadding'>4 Star</label>
-            <div className='starRatings'>
-              <div className='empty-starBars'>|</div>
-              <div className='full-starBars' style={{width: Number(this.state.starCounts['4']) / this.state.revTotal * 100 + '%' || 0}}></div>
+            <div className='starPadding'><label id='4starButton' className='labelPadding'>4 Star</label>
+              <div className='starRatings'>
+                <div className='empty-starBars'>|</div>
+                <div className='full-starBars' style={{width: Number(this.state.starCounts['4']) / this.state.revTotal * 100 + '%' || 0}}></div>
+              </div>
             </div>
-          </div>
-          <div className='starPadding'><label id='3starButton' className='labelPadding'>3 Star</label>
-            <div className='starRatings'>
-              <div className='empty-starBars'>|</div>
-              <div className='full-starBars' style={{width: Number(this.state.starCounts['3']) / this.state.revTotal * 100 + '%' || 0}}></div>
+            <div className='starPadding'><label id='3starButton' className='labelPadding'>3 Star</label>
+              <div className='starRatings'>
+                <div className='empty-starBars'>|</div>
+                <div className='full-starBars' style={{width: Number(this.state.starCounts['3']) / this.state.revTotal * 100 + '%' || 0}}></div>
+              </div>
             </div>
-          </div>
-          <div className='starPadding'><label id='2starButton' className='labelPadding'>2 Star</label>
-            <div className='starRatings'>
-              <div className='empty-starBars'>|</div>
-              <div className='full-starBars' style={{width: Number(this.state.starCounts['2']) / this.state.revTotal * 100 + '%' || 0}}></div>
+            <div className='starPadding'><label id='2starButton' className='labelPadding'>2 Star</label>
+              <div className='starRatings'>
+                <div className='empty-starBars'>|</div>
+                <div className='full-starBars' style={{width: Number(this.state.starCounts['2']) / this.state.revTotal * 100 + '%' || 0}}></div>
+              </div>
             </div>
-          </div>
-          <div className='starPadding'><label id='1starButton' className='labelPadding'>1 Star</label>
-            <div className='starRatings'>
-              <div className='empty-starBars'>|</div>
-              <div className='full-starBars' style={{width: Number(this.state.starCounts['1']) / this.state.revTotal * 100 + '%' || 0}}></div>
+            <div className='starPadding'><label id='1starButton' className='labelPadding'>1 Star</label>
+              <div className='starRatings'>
+                <div className='empty-starBars'>|</div>
+                <div className='full-starBars' style={{width: Number(this.state.starCounts['1']) / this.state.revTotal * 100 + '%' || 0}}></div>
+              </div>
             </div>
           </div>
         </div>
