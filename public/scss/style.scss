@@ -6,7 +6,6 @@
 }
 
 .reviewCreate {
-  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -60,7 +59,6 @@
 }
 .empty-stars {
   font-size: 14pt;
-
 }
 
 .full-stars {
@@ -68,15 +66,9 @@
 }
 
 .reviewList {
-  border: 1px solid rgb(25, 0, 255);
-}
-
-.listItem {
-  border: 1px solid rgb(0, 99, 0)
-}
-
-.reviewParent {
-  border: 1px solid purple;
+  overflow-y: scroll;
+  max-height: 42em;
+  max-width: 70%;
 }
 
 .star-desc {
@@ -91,8 +83,13 @@
 }
 
 .revBreakdown {
-  border: 1px solid yellowgreen;
   width: 50ch;
+  min-width: 30%;
+  max-width: 30%;
+  padding: 5px;
+  border: 3px solid rgba(0, 0, 0, .7);
+  border-radius: 3%;
+  height: fit-content;
 }
 
 .starRatings {
@@ -136,6 +133,7 @@
 .activeFilters {
   display: flex;
   flex-direction: row;
+  right: 50%;
 }
 
 .divPadding {
@@ -156,4 +154,103 @@
 .charFlag {
   position: relative;
   top: -3px;
+}
+
+.starRadio {
+  color: gold;
+  opacity: 0;
+}
+
+.starRadLab {
+  color: gold;
+  position: absolute;
+  min-width: 100%;
+  vertical-align: baseline;
+  padding: 3px 3px 4px 7px;
+}
+
+.indStarRadLab {
+  font-size: 14pt;
+  padding: 1px;
+}
+
+.summary {
+  max-width: 90%;
+  font-size: 12pt;
+  padding: 3px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+}
+
+.placeholding {
+  opacity: 0;
+  padding: 2px;
+}
+
+.starSelected {
+  padding: 2px;
+}
+
+.bigRevImage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 5px;
+  z-index: 1000;
+}
+
+.revAverage {
+  font-size: 42;
+}
+
+.reviewParent {
+  display: flex;
+  flex-direction: row;
+}
+
+.listItem {
+  padding: 5px;
+  margin: 5px;
+  border: 3px solid rgba(0, 0, 0, .7);
+  border-radius: 3%;
+}
+
+.bottomButton {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 70%;
+}
+
+.newest {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 70%;
+}
+
+.charCSS {
+  font-size: 8pt;
+}
+
+.gotChars {
+  color: green;
+  font-size: 8pt;
+}
+
+.needChars {
+  color: red;
+  font-size: 8pt;
+}
+
+.imgBtn {
+  padding: 5px;
+  margin: 5px;
 }

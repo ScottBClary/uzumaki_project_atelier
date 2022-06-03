@@ -28,6 +28,7 @@ export default class ReviewList extends React.Component {
 
   submitReviewHandler (e) {
     const revRef = e.target.elements;
+    console.log(revRef);
     const charOps = {};
     const keyRef = this.props.revMetaData;
     const cyRef = this.props.revMetaDataCypher;
@@ -93,9 +94,11 @@ export default class ReviewList extends React.Component {
       <ul className='reviewList'>
         {tiles}
       </ul>
-      <button onClick={this.openReviewHandler}>Create Review</button>
-      {moreRevs}
-      <ReviewCreate subRev={this.submitReviewHandler} rMd={this.props.revMetaData} open={this.state.openReview} cancel={this.openReviewHandler}/>
+      <div className='bottomButton'>
+        <button onClick={this.openReviewHandler}>Create Review</button>
+        {moreRevs}
+        <ReviewCreate subRev={this.submitReviewHandler} rMd={this.props.revMetaData} open={this.state.openReview} cancel={this.openReviewHandler}/>
+      </div>
     </React.Fragment>;
   }
 }

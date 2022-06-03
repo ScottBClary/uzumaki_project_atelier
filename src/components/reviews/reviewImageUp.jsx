@@ -6,14 +6,15 @@ export default function ImageCreate(props) {
       null
     );
   }
+
   return (
     <>
       <div className='overlay' />
-      <div id='addRevImage' className='addRevImage' onClick={props.imgSub}>
-        <input type='url' placeholder='IMG URL'></input>
-        <button>Add Image</button>
+      <form id='addRevImage' className='addRevImage' onSubmit={props.imgSub}>
+        <input required type='url' placeholder='IMG URL'></input>
+        <button type='submit'>Add Image</button>
         <button onClick={props.imgWindow}>Cancel</button>
-      </div>
+      </form>
     </>
   );
 }
