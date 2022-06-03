@@ -52,7 +52,7 @@ class MainQA extends React.Component {
         <h2 className='header'>QUESTIONS AND ANSWERS</h2>
         <Search/>
         <QAList entries={this.state.results} className='qa-container'/>
-        {/* <button>More Answered Questions</button> */}
+        <button>More Answered Questions</button>
         {this.state.questionModalOpened ? <AddQModal closeQuestionModal={this.openQuestionModal}/> : null}
         <button className='add-question-button' onClick={this.openQuestionModal}>ADD QUESTION</button>
       </div>

@@ -60,7 +60,9 @@ module.exports = {
     //     API_TOKEN: JSON.stringify(process.env.API_TOKEN),
     //   },
     // }),
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(__dirname, './.env')
+    }),
   ],
   resolve: {
     fallback: {
