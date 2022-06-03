@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 const API_TOKEN = process.env.API_TOKEN;
-console.log(API_TOKEN);
 export default class ReviewBreakdown extends React.Component {
   constructor(props) {
     super(props);
@@ -11,6 +10,7 @@ export default class ReviewBreakdown extends React.Component {
       charKeys: [],
       charVals: [],
       starCounts: {},
+      revAvg: 0
     };
   }
 
@@ -115,7 +115,7 @@ export default class ReviewBreakdown extends React.Component {
     return <React.Fragment>
       <div className='revBreakdown'>
         <div>
-          <h1 className='revAverage, centerRevItem'>{Number(this.state.ratings)}</h1>
+          <h1 className='revAverage, centerRevItem'>{Number(this.state.ratings) || 1}</h1>
           <div className='centerRevItem'>
             <div className='ratings'>
               <div className='empty-stars'>{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}{'\u2606'}</div>

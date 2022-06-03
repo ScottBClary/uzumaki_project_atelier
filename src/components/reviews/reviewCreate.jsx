@@ -33,7 +33,6 @@ export default class ReviewCreate extends React.Component {
 
   imageSubmit(e) {
     e.preventDefault();
-    console.log(e.target.children[0].value);
     this.setState({
       revImages: [...this.state.revImages, e.target.children[0].value],
       imageWindow: false
@@ -52,7 +51,13 @@ export default class ReviewCreate extends React.Component {
     e.preventDefault();
     this.setState({
       starRating: 0,
-      revImages: []
+      revImages: [],
+      'Fit': 0,
+      'Length': 0,
+      'Quality': 0,
+      'Comfort': 0,
+      'Width': 0,
+      'Size': 0
     });
     this.props.cancel(e);
   }
@@ -61,10 +66,10 @@ export default class ReviewCreate extends React.Component {
     var endex = e.target.id.length - 1;
     var charKey = e.target.id.slice(0, endex);
     var charVal = e.target.id[endex];
-
     this.setState({
       [charKey]: charVal
     });
+    this.props.redCharHand(e);
   }
 
   bodyCounter(e) {
@@ -162,9 +167,10 @@ export default class ReviewCreate extends React.Component {
         var radNum = numDex + 1;
         return <input id={char + radNum} type='radio' name={char} key={char + radNum} required></input>;
       });
+      console.log(this.state[char]);
       return <div key={char + index + 'div'}>
         <label className='charCSS' key={char + index + 'label'} htmlFor={char + index}>{radDesc[char][this.state[char]]}</label>
-        <div name={char} id={char + index} key={char + index} onChange={this.charHandler}>{char} {currentChar}</div>
+        <div name={char} id={char + index} key={char + index} onChange={this.charHandler} value={this.state[char]}>*{char} {currentChar}</div>
       </div>;
     });
 
@@ -175,7 +181,8 @@ export default class ReviewCreate extends React.Component {
     return <>
       <div className='overlay' />
       <form name='subRev' className='reviewCreate' onSubmit={this.props.subRev}>
-        <label className='centerRevItem'>Overall Rating
+        <div>* indicates required field</div>
+        <label className='centerRevItem'>*Overall Rating
           <div className='ratings'>
             <div className='centerRevItem'>
               {starButtons}
@@ -186,7 +193,7 @@ export default class ReviewCreate extends React.Component {
           </div>
           <div className='star-desc'>{starDesc[this.state.starRating]}</div>
         </label>
-        <label className='centerRevItem'>Do you recommend this product?
+        <label className='centerRevItem'>*Do you recommend this product?
           <label htmlFor='revRadYes'>yes<input id='revRadYes' value={true} type='radio' name='recRadio' required/></label>
           <label htmlFor='revRadNo'>no<input id='revRadNo' value={false} type='radio' name='recRadio' required/></label>
         </label>
@@ -194,10 +201,10 @@ export default class ReviewCreate extends React.Component {
           {radChars}
         </div >
         <label className='centerRevItem, summary'> Review summary
-          <input type='text' name='summary' className='summary' placeholder='Example: Best purchase ever!' size='42' required></input>
+          <input type='text' name='summary' className='summary' placeholder='Example: Best purchase ever!' size='42' required maxlength='60'></input>
         </label>
-        <label className='centerRevItem, imgBtn'> Review Body
-          <textarea onChange={this.bodyCounter} name='revBody' rows='5' cols='40' className='revBody' placeholder='Why did you like the product or not?' required></textarea>
+        <label className='centerRevItem, imgBtn'> *Review Body
+          <textarea onChange={this.bodyCounter} name='revBody' rows='5' cols='40' className='revBody' placeholder='Why did you like the product or not?' required minlength='50' maxlength='1000'></textarea>
           {charCountElement}
         </label>
         <div>
@@ -206,14 +213,20 @@ export default class ReviewCreate extends React.Component {
             {this.state.revImages.length < 5 && <button id='addRevImageButton' value={this.state.revImages} onClick={this.imageHandler}>Add Image</button>}
           </div>
         </div>
-        <label className='centerRevItem, summary'>What is your nickname
+        <label className='centerRevItem, summary'>*What is your nickname
           <input required type='text' name='revNickName' className='revNickname' placeholder='Example: jackson11!'></input>
         </label>
-        <label className='centerRevItem, summary'>Your email
+        <div className='centerRevItem, warnText'>
+          <div>For privacy reasons, do not use your full name or email address</div>
+        </div>
+        <label className='centerRevItem, summary'>*Your email
           <input required type='email' name='revEmail' className='revEmail' placeholder='Example: jackson11@email.com'></input>
         </label>
+        <div className='centerRevItem, warnText'>
+          <div>For authentication reasons, you will not be emailed</div>
+        </div>
         <input type='hidden' id='starRatingData' value={this.state.starRating}></input>
-        <input style={{ display: 'hidden' }}type='submit' value='Submit'></input>
+        <input style={{ display: 'hidden' }} type='submit' value='Submit'></input>
         <button onClick={this.resetForm}>cancel</button>
       </form>
       <ImageCreate imgOpen={this.state.imageWindow} imgSub={this.imageSubmit} imgWindow={this.imageHandler}/>
