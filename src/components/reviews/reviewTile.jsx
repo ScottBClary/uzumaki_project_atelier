@@ -1,15 +1,21 @@
 import React from 'react';
 import axios from 'axios';
+import ImageLarge from './imageLarge.jsx';
 const API_TOKEN = process.env.API_TOKEN;
 
 export default class ReviewTile extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      bigImage: false,
+      image: ''
+    };
     this.emptyStars = String.fromCodePoint(0x2606, 0x2606, 0x2606, 0x2606, 0x2606);
     this.fullStars = String.fromCodePoint(0x2605, 0x2605, 0x2605, 0x2605, 0x2605);
     this.revReportHandler = this.revReportHandler.bind(this);
     this.revHelpfulHandler = this.revHelpfulHandler.bind(this);
+    this.bigImageHandler = this.bigImageHandler.bind(this);
+    this.closeImageHandler = this.closeImageHandler.bind(this);
   }
 
   revReportHandler (e, id) {
@@ -45,6 +51,20 @@ export default class ReviewTile extends React.Component {
       });
   }
 
+  bigImageHandler(e) {
+    e.preventDefault();
+    this.setState({
+      image: e.target.src,
+      bigImage: !this.state.bigImage
+    });
+  }
+
+  closeImageHandler(e) {
+    e.preventDefault();
+    this.setState({
+      bigImage: !this.state.bigImage
+    });
+  }
 
   render() {
     const rD = this.props.revData;
@@ -52,7 +72,7 @@ export default class ReviewTile extends React.Component {
     const rec = rD.recommend ? 'Yes!' : 'No.';
     const starRating = this.props.revData.rating * 20;
     const images = rD.photos.map((photo) => {
-      return <img src={photo.url} alt='user provided img' key={photo.id} width="100" height="100"></img>;
+      return <img onClick={this.bigImageHandler} src={photo.url} alt='user provided img' key={photo.id} width='100' height='100'></img>;
     });
 
     if (rD.response === null) {
@@ -82,10 +102,14 @@ export default class ReviewTile extends React.Component {
       <div>{rD.reviewer_name}</div>
       {revResponse}
       <div>Helpful? {markHelpful} {rD.helpfulness}
-        <button className='revReport' onClick={e => this.revReportHandler(e, this.props.id)}>
+        <div>
+          <button className='revReport' onClick={e => this.revReportHandler(e, this.props.id)}>
           Report
-        </button>
+          </button>
+
+        </div>
       </div>
+      <ImageLarge closeImg={this.closeImageHandler} bigImage={this.state.image} bigImgOpen={this.state.bigImage} />
     </div>;
   }
 }

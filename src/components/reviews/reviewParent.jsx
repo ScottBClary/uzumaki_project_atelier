@@ -142,13 +142,15 @@ export default class ReviewParent extends React.Component {
     return <div className='reviewParent' id='reviews'>
       <ReviewBreakdown productId={this.state.productId} handleFilter={this.handleFilter} rawFilt={rawFilters} resFilt={this.resetFilter}/>
       <div>
-        <label> Sort on
-          <select name='sort' value={this.state.sort} onChange={this.handleSort}>
-            <option value='relevant'>Relevent</option>
-            <option value='helpful'>Helpful</option>
-            <option value='newest'>Newest</option>
-          </select>
-        </label>
+        <div className='newest'>
+          <label> Sort on
+            <select name='sort' value={this.state.sort} onChange={this.handleSort}>
+              <option value='relevant'>Relevent</option>
+              <option value='helpful'>Helpful</option>
+              <option value='newest'>Newest</option>
+            </select>
+          </label>
+        </div>
         <ReviewList revHelpHand={this.helpfulHandler} upHand={this.updateHandler} revMetaData={this.state.revMetaData} revMetaDataCypher={this.state.revMetaDataCypher} reviews={filteredRevs} revHelp={this.state.helpfulReviews}/>
       </div>
     </div>;
