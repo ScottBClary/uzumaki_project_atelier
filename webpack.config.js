@@ -61,9 +61,7 @@ module.exports = {
     //     API_TOKEN: JSON.stringify(process.env.API_TOKEN),
     //   },
     // }),
-    new Dotenv({
-      path: path.resolve(__dirname, '..', '.env')
-    }),
+    new Dotenv({ systemvars: true }),
 
   ],
   resolve: {
