@@ -56,12 +56,12 @@ module.exports = {
     port: 3000,
   },
   plugins: [
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     API_TOKEN: JSON.stringify(process.env.API_TOKEN),
-    //   },
-    // }),
-    new Dotenv({ systemvars: true }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+      },
+    }),
+    // new Dotenv(),
 
   ],
   resolve: {
