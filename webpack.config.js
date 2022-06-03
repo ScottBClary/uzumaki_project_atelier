@@ -7,6 +7,7 @@ const Dotenv = require('dotenv-webpack');
 
 
 
+
 //Our export here is the configuration webpack we will use
 module.exports = {
   //[mode] will determine how our code will be bundled.
@@ -61,8 +62,9 @@ module.exports = {
     //   },
     // }),
     new Dotenv({
-      path: path.resolve(__dirname, './.env')
+      path: path.resolve(__dirname, '.env')
     }),
+
   ],
   resolve: {
     fallback: {
