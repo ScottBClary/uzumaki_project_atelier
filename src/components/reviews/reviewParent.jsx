@@ -139,7 +139,7 @@ export default class ReviewParent extends React.Component {
     } else {
       var filteredRevs = this.state.reviews;
     }
-    return <div className='reviewParent'>
+    return <div className='reviewParent' id='reviews'>
       <ReviewBreakdown productId={this.state.productId} handleFilter={this.handleFilter} rawFilt={rawFilters} resFilt={this.resetFilter}/>
       <div>
         <label> Sort on

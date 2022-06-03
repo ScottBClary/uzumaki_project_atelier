@@ -30,7 +30,7 @@ var StarRating = function(props) {
   console.log((20 * widthInStars) + (widths[remainder] * 20) + '%');
   console.log('remainder is ' + remainder);
   return <div className = 'starDiv' color = 'gold' display = 'flex'>
-    <div style = {{'width': 'max-content', 'position': 'relative'}}>{emptyStars}<div className = 'fullStars' style = {{'width': (20 * widthInStars) + (widths[remainder] * 20) + '%'}}>{fullStars}</div></div>
+    <div style = {{'width': 'max-content', 'position': 'relative'}}>{emptyStars}<div className = 'fullStars' style = {{'width': (20 * widthInStars) + (widths[remainder] * 20) + '%'}}>{fullStars}</div><a href="#reviews">Reviews</a></div>
 
   </div>;
 };
