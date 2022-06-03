@@ -53,6 +53,8 @@ module.exports = {
 
     ]
   },
+
+
   //[devtool] this is an additional source map that will let the browser know what files
   //are running out code
   //This helps with error tracing. Without it we will not know where our errors are
@@ -60,6 +62,9 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
   //[devServer] configuration for the live server including port
   devServer: {
+    allowedHosts: [
+      '.amazonaws.com'
+    ],
     //[static] config for how what to serve
     static: {
       directory: path.join(__dirname, 'public'),
