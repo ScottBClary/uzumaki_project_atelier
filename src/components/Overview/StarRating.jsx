@@ -16,7 +16,16 @@ var StarRating = function(props) {
   fullStars.push(<AiFillStar></AiFillStar>);
   fullStars.push(<AiFillStar></AiFillStar>);
 
-  var theWidth = Math.floor((props.rating * 100) * 20) / 20;
+  var theWidth = props.rating * 100;
+  var widthInStars = (theWidth * 100) / 20;
+  var remainder = Math.floor((Math.floor(widthInStars * 100) % 100) / 25);
+
+  var result = [];
+  for (var i = 0; i < widthInStars; i++) {
+    result.push(<AiFillStar></AiFillStar>);
+  }
+  var widths = [0, 44, 66, 100];
+  // result.push(<AiFillStar style = {{width: {width}}}></AiFillStar>);
   return <div className = 'starDiv' color = 'gold' display = 'flex'>
     <div style = {{'width': 'max-content', 'position': 'relative'}}>{emptyStars}<div className = 'fullStars' style = {{'width': theWidth + '%'}}>{fullStars}</div></div>
 

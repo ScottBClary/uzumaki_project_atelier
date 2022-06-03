@@ -47,15 +47,26 @@ table {
 	border-spacing: 0;
 }
 * {
-  margin: 0 !important;
+  /* margin: 0 !important;
 	border: 0!important;
-	vertical-align: baseline !important;
+	vertical-align: baseline !important; */
 }
 
 .productDetail {
   --productInfoMainBGColor: rgba(76, 175, 80, 0.3);
 }
+.productInfoSocialMediaBar {
+  font-size: 30px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
 
+.productInfoSocialMediaBar svg {
+  padding:10px;
+}
 .starDiv svg {
   width: 42px;
   height: 44px;
@@ -88,8 +99,8 @@ table {
   border-radius: 10px
 }
 .divLeftExpanded {
-  height: 90vw;
-  width: 90vw;
+  height: 90vh;
+  width: auto;
   display: grid;
   grid-template-rows: 10% 90%;
 }
@@ -109,9 +120,9 @@ table {
   flex-wrap: wrap;
   margin: 3rem auto;
   width: auto;
+  height:1000px;
   margin-left: 50px;
   margin-right: 50px;
-  height: 700px;
   border-style: solid;
  justify-content: center;
 }
@@ -215,7 +226,6 @@ table {
 
 .groupDivRight {
   width: 50%;
-  height: 100%;
   background-color: var(--productInfoMainBGColor);
   min-width: 400px;
 }
@@ -224,7 +234,6 @@ table {
   justify-content: space-around;
   display: flex;
   flex-direction: column;
-
   height: 100%;
   min-width: 400px;
 }
@@ -335,6 +344,7 @@ table {
   position: absolute;
   top: 0;
   left: 0;
+  font-size: 40px;
 }
 
 .styleGallery {
@@ -349,6 +359,8 @@ table {
   z-index: 0;
   display: flex;
   justify-content: space-around;
+  align-content: center;
+  align-items: center;
   gap: 2px;
 }
 

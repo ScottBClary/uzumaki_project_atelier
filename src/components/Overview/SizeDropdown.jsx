@@ -109,7 +109,6 @@ class SizeDropdown extends React.Component {
     return result;
   }
   render() {
-    console.log('size dropdown rendered');
     var theStore = store.getState();
     return <div className = 'sizeDropdown'>
       <div className = 'sizeDropdownDiv'>
