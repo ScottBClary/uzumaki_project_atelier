@@ -12,23 +12,46 @@ export default class ReviewList extends React.Component {
 
     this.state = {
       openReview: false,
-      moreReviews: false
+      moreReviews: false,
+      'Fit': 0,
+      'Length': 0,
+      'Quality': 0,
+      'Comfort': 0,
+      'Width': 0,
+      'Size': 0,
     };
     this.openReviewHandler = this.openReviewHandler.bind(this);
     this.submitReviewHandler = this.submitReviewHandler.bind(this);
     this.revShowHandler = this.revShowHandler.bind(this);
+    this.redCharHand = this.redCharHand.bind(this);
   }
 
   openReviewHandler(e) {
     e.preventDefault();
     this.setState({
-      openReview: !this.state.openReview
+      openReview: !this.state.openReview,
+      'Fit': 0,
+      'Length': 0,
+      'Quality': 0,
+      'Comfort': 0,
+      'Width': 0,
+      'Size': 0,
+    });
+  }
+  redCharHand(e) {
+    var endex = e.target.id.length - 1;
+    var charKey = e.target.id.slice(0, endex);
+    var charVal = e.target.id[endex];
+
+    this.setState({
+      [charKey]: charVal
     });
   }
 
-  submitReviewHandler (e) {
+  submitReviewHandler(e) {
+    e.preventDefault();
     const revRef = e.target.elements;
-    console.log(revRef);
+    console.log(e.target.elements);
     const charOps = {};
     const keyRef = this.props.revMetaData;
     const cyRef = this.props.revMetaDataCypher;
@@ -36,7 +59,12 @@ export default class ReviewList extends React.Component {
 
     keyRef.forEach((cyKey) => {
       var strKey = cyRef[cyKey].toString();
-      charOps[strKey] = Number(revRef[cyKey].value);
+      console.log('cyref', cyRef);
+      console.log('cykey', cyKey);
+      console.log('revcy', revRef[cyKey]['Comfort']);
+      console.log(strKey);
+      var charValue = this.props[cyKey];
+      charOps[strKey] = charValue;
     });
 
     const reqBody = {
@@ -50,6 +78,7 @@ export default class ReviewList extends React.Component {
       'photos': ['https://nerdist.com/wp-content/uploads/2020/07/maxresdefault.jpg'],
       'characteristics': charOps
     };
+    console.log(reqBody);
 
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', reqBody
       ,
@@ -97,7 +126,7 @@ export default class ReviewList extends React.Component {
       <div className='bottomButton'>
         <button onClick={this.openReviewHandler}>Create Review</button>
         {moreRevs}
-        <ReviewCreate subRev={this.submitReviewHandler} rMd={this.props.revMetaData} open={this.state.openReview} cancel={this.openReviewHandler}/>
+        <ReviewCreate redCharHand={this.redCharHand} subRev={this.submitReviewHandler} rMd={this.props.revMetaData} open={this.state.openReview} cancel={this.openReviewHandler}/>
       </div>
     </React.Fragment>;
   }
