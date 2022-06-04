@@ -6,10 +6,10 @@ import ProductDetail from './components/Overview/ProductDetail.jsx';
 import styles from './app.css';
 import store from './redux.js';
 import MainQA from './QandA/MainQA.js';
+import ReviewParent from './components/reviews/reviewParent.jsx';
 import axios from 'axios';
 
 const root = createRoot(document.getElementById('root'));
-import ReviewParent from './components/reviews/reviewParent.jsx';
 
 var productInfo = {
   'id': 66642,
