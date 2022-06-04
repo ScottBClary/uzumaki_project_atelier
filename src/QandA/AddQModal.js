@@ -37,18 +37,27 @@ class AddQModal extends React.Component {
       .then((response) => {
         console.log(response, 'response');
       })
+      .then(this.props.closeQuestionModal())
+      .then(this.props.getData())
       .catch((error) => {
         console.log(error, 'error');
       });
   }
   render() {
+    var options = {
+      'body': this.state.question,
+      'name': this.state.nickname,
+      'email': this.state.email,
+      'product_id': this.state.productId
+    };
+
     return (
       <div className="question-modal">
         <div className='question-modal-close' onClick={this.props.closeQuestionModal}>x</div>
         <h3 className='add-question-titles'>ASK YOUR QUESTION</h3>
         <h3 className='add-question-titles'>ABOUT THE -PRODUCT NAME-</h3>
         <h3 className='add-question-titles'>Your Question*</h3>
-        <textarea className='add-question-text' maxLength={1000} name="question" onChange={(event, question) => this.questionInput(event, name)} ></textarea>
+        <textarea className='add-question-text' maxLength={1000} name="question" onChange={(event, name) => this.questionInput(event, name)} ></textarea>
         <h3 className='add-question-titles'>Nickname*</h3>
         <input className='add-question-username' maxLength={60} placeholder={'Example:jackson11!'} name="nickname" onChange={(event, name) => this.questionInput(event, name)}></input>
         <span>For privacy reasons, do not use your full name or email address</span>

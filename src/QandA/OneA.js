@@ -66,7 +66,7 @@ class OneA extends React.Component {
   }
 
   render() {
-
+console.log(this.props)
     return (
       <div className='answer'>
         <div className='answer-text'>A: {this.props.answer.body}</div>

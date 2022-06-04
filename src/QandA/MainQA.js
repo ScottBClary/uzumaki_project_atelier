@@ -15,31 +15,38 @@ class MainQA extends React.Component {
       results: [],
       resultsToShow: [],
       resultsShown: [],
-      question: '',
-      answers: {},
+      endOfQuestions: false,
+      answers: [],
+      answersToShow: [],
+      answersShown: [],
+      endOfAnswers: false,
       productId: 66642
 
     };
     this.openQuestionModal = this.openQuestionModal.bind(this);
+    this.moreQuestions = this.moreQuestions.bind(this);
+    // this.extractAnswers = this.extractAnswers.bind(this);
+    this.getData = this.getData.bind(this);
 
   }
-
   componentDidMount() {
+    this.getData();
+  }
+  getData() {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${this.state.productId}`, {
       headers: {
         'Authorization': process.env.API_TOKEN
       }
     })
       .then((body) => {
+
+        var resultsShown = body.data.results.slice(0, 2);
+        var resultsToShow = body.data.results.slice(3);
         this.setState({
           results: body.data.results,
-          // resultsToShow: body.data.results.splice(3),
-          // resultsShown: body.data.results.splice(0, 2),
-          answers: body.data.results.answers
+          resultsShown: resultsShown,
+          resultsToShow: resultsToShow,
         });
-      })
-      .then(() => {
-
       })
       .catch((error) => {
         console.log('error:', error);
@@ -54,22 +61,31 @@ class MainQA extends React.Component {
   }
 
   moreQuestions() {
-    var revealedQuestions = this.state.resultsToShow.splice(0, 2);
-    var shown = this.state.resultsShown.concat(revealedQuestions);
-    this.setState({
-      resultsShown: shown,
-      resultsToShow: this.state.resultsToShow.splice(3)
-    });
+    if (this.state.results.length <= 2) {
+      this.setState({
+        resultsShown: this.state.results,
+        endOfQuestions: true
+      });
+      console.log('end of questions');
+    } else {
+      var revealedQuestions = this.state.resultsToShow.slice(0, 2);
+      var shown = this.state.resultsShown.concat(revealedQuestions);
+      this.setState({
+        resultsShown: shown,
+        resultsToShow: this.state.resultsToShow.slice(3)
+      });
+    }
   }
 
   render() {
+    console.log('resultsshown', this.state.resultsShown)
     return (
       <div>
         <h2 className='header'>QUESTIONS AND ANSWERS</h2>
         <Search/>
-        <QAList entries={this.state.resultsShown} moreQuestions={this.moreQuestions} className='qa-container'/>
-        <button onClick={this.moreQuestions}>More Answered Questions</button>
-        {this.state.questionModalOpened ? <AddQModal closeQuestionModal={this.openQuestionModal}/> : null}
+        <QAList entries={this.state.resultsShown} className='qa-container'/>
+        {this.state.endOfQuestions ? null : <button onClick={this.moreQuestions}>More Answered Questions</button>}
+        {this.state.questionModalOpened ? <AddQModal closeQuestionModal={this.openQuestionModal} getData={this.getData}/> : null}
         <button className='add-question-button' onClick={this.openQuestionModal}>ADD QUESTION</button>
       </div>
     );
