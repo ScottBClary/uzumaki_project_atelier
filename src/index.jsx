@@ -387,7 +387,7 @@ var productInfo = {};
 //Add star-rating to productInfo before giving to productDetail
 
 
-  //axios get
+//axios get
 axios.get(`${theWebsite}/products/${productID}`)
   .then((body) => {
     console.log('got a response');
