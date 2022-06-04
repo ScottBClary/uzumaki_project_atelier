@@ -120,7 +120,6 @@ table {
   flex-wrap: wrap;
   margin: 3rem auto;
   width: auto;
-  height:1000px;
   margin-left: 50px;
   margin-right: 50px;
   border-style: solid;
@@ -145,7 +144,8 @@ table {
 
   width: 100%;
   height: 70%;
-
+  min-height: 400px;
+  max-height: 80vh;
   min-width: 200px;
   display: flex;
   justify-content: space-around;
