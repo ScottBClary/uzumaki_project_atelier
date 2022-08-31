@@ -17,6 +17,6 @@ Currently using local data. Heroku server is no longer available.
 Containerize using docker. Add environment variable instructions to readme.
 
 # How it works--
-Currently uses sample product info included in repository. In order to deploy, create a product API to request the product info from. DB is SQL. Tested and works fully deployed on EC2.
+Currently uses sample product info included in repository. In order to deploy, create a product API to request the product info from. Tested and works fully deployed on EC2.
 
 ![image](https://user-images.githubusercontent.com/14322119/187733546-dd26857f-873b-4ac5-80fc-33235bfba239.png)
