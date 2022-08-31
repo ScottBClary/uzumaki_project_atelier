@@ -381,41 +381,51 @@ var sampleProductInfo = {
 
 var productID = 66642;
 var theWebsite = 'http://localhost:3000';
-var productInfo = {};
+var productInfo = sampleProductInfo;
 //change to jsx once babel is set up
 //Give html elements ID's so we can change with CSS?
 //Add star-rating to productInfo before giving to productDetail
 
 
 //axios get
-axios.get(`${theWebsite}/products/${productID}`)
-  .then((body) => {
-    console.log('got a response');
-    productInfo = body.data;
-    console.log(productInfo);
-  }).then(() => {
-    productInfo.rating = 2.7;
-    const App = () => {
-      return ( <React.Fragment>
-        <h1>
-          Hello World!
-        </h1>
-        <ProductDetail product = {productInfo}></ProductDetail>
-        <div>
-          <ReviewParent />
-          <MainQA/>
-        </div>
-      </React.Fragment>
-      );
-    };
-    root.render(<App/>);
-  }
+// axios.get(`${theWebsite}/products/${productID}`)
+//   .then((body) => {
+//     console.log('got a response');
+//     productInfo = body.data;
+//     console.log(productInfo);
+//   }).then(() => {
+//     productInfo.rating = 2.7;
+//     const App = () => {
+//       return ( <React.Fragment>
+//         <h1>
+//           Hello World!
+//         </h1>
+//         <ProductDetail product = {productInfo}></ProductDetail>
+//         <div>
+//           <ReviewParent />
+//           <MainQA/>
+//         </div>
+//       </React.Fragment>
+//       );
+//     };
+//     root.render(<App/>);
+//   }
 
 
-  ).catch((e) => {console.log('error');});
+//   ).catch((e) => {console.log('error');});
 
 
-
+  const App = () => {
+    return ( <React.Fragment>
+      <ProductDetail product = {productInfo}></ProductDetail>
+      <div>
+        <ReviewParent />
+        <MainQA/>
+      </div>
+    </React.Fragment>
+    );
+  };
+  root.render(<App/>);
 
 
 //render our app to the dom mounted to the element with id of root inside

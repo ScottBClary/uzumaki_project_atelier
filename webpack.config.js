@@ -46,8 +46,11 @@ module.exports = {
       //second rule is to check for css files and load them with the following loaders
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-        include: __dirname + '/src'
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ],
+
       },
 
 

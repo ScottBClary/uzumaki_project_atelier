@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/uzumakirfc/uzumaki_project_atelier.git",
-  "author": "Amanda <amandaqwright@gmail.com>",
+  "author": "Scott Clary <Scottbclary@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
@@ -30,9 +30,7 @@
     "webpack-dev-server": "^4.9.0"
   },
   "scripts": {
-    "start": "webpack watch --mode=development",
-    "build": "webpack --mode=production",
-    "dev": "webpack serve --open",
-    "expressdev": "npx nodemon server/index.js --mode=development"
+    "build": "webpack watch --mode=development",
+    "start": "npx nodemon server/index.js --mode=development"
   }
 }
