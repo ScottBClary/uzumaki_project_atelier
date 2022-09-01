@@ -8,7 +8,6 @@ A full-stack amazon clone. Type in a random product Id and take a look at all th
 2. npm run build
 3. npm run start
 
-
 # Notes
 
 Currently using local data. Heroku server is no longer available.
